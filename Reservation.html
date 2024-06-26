@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserve Tickets</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-left">
+            <a href="index.html" class="nav-link">Home</a>
+            <div class="dropdown">
+                <a href="#" class="nav-link">Catalog</a>
+                <div class="dropdown-content">
+                    <a href="#">Tickets</a>
+                    <a href="#">Merchandise</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="nav-link">Other pages</a>
+                <div class="dropdown-content">
+                    <a href="#">About</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="nav-link">Sale</a>
+                <div class="dropdown-content">
+                    <a href="#">Discounts</a>
+                    <a href="#">Clearance</a>
+                </div>
+            </div>
+            <a href="#" class="nav-link">Blog</a>
+        </div>
+        <div class="navbar-center">
+            <a href="index.html" class="logo">Online Tickets</a>
+        </div>
+        <div class="navbar-right">
+            <a href="#" class="nav-icon">🔍</a>
+            <a href="#" class="nav-icon">👤</a>
+            <a href="#" class="nav-icon">❤️ <span class="badge">0</span></a>
+            <a href="#" class="nav-icon">🛒</a>
+        </div>
+    </nav>
+    <div class="content">
+        <h1>Reserve Your Tickets</h1>
+        <form id="reservation-form">
+            <label for="event">Event:</label>
+            <select id="event" name="event">
+                <option value="opening-ceremony">Opening Ceremony</option>
+                <option value="100m-final">100m Final</option>
+                <option value="swimming">Swimming</option>
+            </select>
+
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" min="1" max="10">
+
+            <button type="submit">Reserve</button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
