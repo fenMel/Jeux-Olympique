@@ -16,9 +16,9 @@ body, html {
     background-color: white;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: flex;
-    justify-content: space-evenly; /* Espace équitablement les éléments de navigation horizontalement */
-    align-items: center; /* Centre verticalement les éléments */
-    padding: 0 20px; /* Ajoute un padding horizontal pour éviter que les éléments touchent les bords */
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 20px;
 }
 
 .navbar-left, .navbar-center, .navbar-right {
@@ -52,7 +52,7 @@ body, html {
 
 /* Ajustement de la marge supérieure du corps pour éviter le chevauchement avec la barre de navigation */
 body {
-    margin-top: 60px; /* Ajustez cette valeur en fonction de la hauteur de votre barre de navigation */
+    margin-top: 60px;
 }
 
 /* Style du logo de la marque avec une police en gras et une taille de police spécifique */
@@ -67,14 +67,11 @@ body {
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    margin-top: 60px; /* Ajusté pour la hauteur de la barre de navigation */
 }
 
 .carousel-item {
-    position: absolute;
     width: 100%;
     height: 100%;
-    background-color: black;
     transition: opacity 1s ease-in-out;
     opacity: 0;
 }
@@ -83,7 +80,6 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.7;
 }
 
 .carousel-item.active {
@@ -93,23 +89,26 @@ body {
 .carousel-caption {
     position: absolute;
     top: 50%;
-    right: 10%;
-    transform: translateY(-50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
     color: white;
-    text-align: right;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
 }
 
-.carousel-caption h2 {
-    font-size: 48px;
+.carousel-caption h5 {
+    font-size: 2em;
     margin: 0;
 }
 
 .carousel-caption p {
-    font-size: 24px;
+    font-size: 1.2em;
     margin: 10px 0;
 }
 
-.carousel-caption .button {
+.carousel-caption a.btn {
     display: inline-block;
     padding: 10px 20px;
     background-color: white;
@@ -117,6 +116,10 @@ body {
     text-decoration: none;
     font-weight: bold;
     border-radius: 5px;
+}
+
+.carousel-caption a.btn:hover {
+    background-color: #ddd;
 }
 
 /* Styles pour les contrôles du carrousel (précédent et suivant) */
@@ -132,6 +135,7 @@ body {
 }
 
 .carousel-control-prev {
+    margin-top: 50%;
     left: 10px;
 }
 
@@ -143,9 +147,9 @@ body {
 .header__icon, .wishlist-link {
     display: inline-block;
     position: relative;
-    width: 24px; /* Largeur de l'icône */
-    height: 24px; /* Hauteur de l'icône */
-    margin-right: 10px; /* Marge à droite (ajustez selon votre mise en page) */
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
     color: #000000;
 }
 
@@ -153,13 +157,11 @@ body {
     display: block;
     width: 100%;
     height: 100%;
-
 }
 
 /* Styles spécifiques pour l'icône de panier vide */
 .icon-cart-empty path {
-    /* Couleur de remplissage de l'icône */
-    fill: #000000; /* Remplacez par la couleur de votre choix */
+    fill: #000000;
 }
 
 /* Styles pour le texte visuellement masqué */
@@ -178,9 +180,9 @@ body {
 .wishlist-link {
     display: inline-block;
     position: relative;
-    text-decoration: none; /* Enlève le soulignement du lien */
-    color: black; /* Couleur du texte du lien */
-    margin-right: 10px; /* Ajustez selon votre mise en page */
+    text-decoration: none;
+    color: black;
+    margin-right: 10px;
 }
 
 .wishlist-link .zemez_wishlist_total__style {
@@ -188,17 +190,206 @@ body {
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: -8px; /* Ajustez pour placer le nombre au-dessus de l'icône */
-    right: -8px; /* Ajustez pour positionner le nombre à droite de l'icône */
-    background-color: red; /* Couleur de fond */
-    color: white; /* Couleur du texte */
-    height: 20px; /* Hauteur du cercle */
-    width: 20px; /* Largeur du cercle */
-    border-radius: 50%; /* Cercle avec bord arrondi */
-    font-size: 12px; /* Taille de la police */
-    font-weight: bold; /* Gras pour mettre en évidence */
-    line-height: 1; /* Ajustement de l'espacement de ligne */
-    text-align: center; /* Centre le texte à l'intérieur du cercle */
-    z-index: 10; /* Assurez-vous que le nombre est au-dessus de l'icône */
+    top: -8px;
+    right: -8px;
+    background-color: red;
+    color: white;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+    z-index: 10;
 }
 
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    width: 0;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    transition: width 0.4s ease-in-out;
+    opacity: 0;
+}
+
+.search-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.search-icon img {
+    width: 20px;
+    height: 20px;
+}
+
+.search-container.active .search-input {
+    width: 200px;
+    opacity: 1;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.main-content > div {
+    width: 70%;
+}
+.main-content {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.uk-navbar-nav {
+    justify-content: center;
+    font-family: "Catamaran", sans-serif;
+    gap: 15px;
+    margin-bottom: 35px;
+}
+.uk-navbar-nav > li {
+    padding: 0;
+    min-width: 100px;
+}
+.uk-navbar-nav>li>a {
+    padding: 15px 35px;
+    display: block;
+    background-color: #fff;
+    color: #222;
+    font-size: 15px;
+    min-height: auto;
+    font-weight: 600;
+    box-shadow: 0 0 25px #cccccc42;
+    border-radius: 7px;
+    transition: 0.5s all ease-in-out;
+}
+.uk-navbar-nav>li>a:hover, .uk-navbar-nav>li.uk-active>a {
+    background-color: #7B68EE;
+    color: #fff;
+}
+.img-gallery-container > li {
+    position: relative;
+    padding: 10px;
+    margin-top: 5px !important;
+}
+.img-gal {
+    height: 415px;
+    width: 100%;
+    object-fit: cover;
+    transition: 0.5s all ease-in-out;
+    border-radius: 6px;
+}
+.img-gallery-container > li:hover > img {
+    filter: brightness(0.4) blur(3px);
+}
+.float-gallery-content {
+    position: absolute;
+    width: 90%;
+    z-index: -1;
+    background: #fff;
+    padding: 0;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s all ease-in-out;
+    overflow: hidden;
+}
+.img-gallery-container > li:hover .float-gallery-content {
+    bottom: 20px;
+    opacity: 1;
+    visibility: visible;
+    z-index: 9;
+}
+.uk-block {
+    display: block;
+}
+.float-gallery-content .content {
+    padding: 8px 15px;
+}
+.float-gallery-content .content > a {
+    color: #212121;
+    position: relative;
+    bottom: -50px;
+    opacity: 0;
+    transition: all 0.5s;
+}
+.float-gallery-content .content > a:hover {
+    color: #7B68EE;
+}
+.main-content button {
+    border: 0;
+    height: 100%;
+    padding: 5px 15px;
+    background: #7B68EE;
+    font-size: 30px;
+    color: #fff;
+    position: relative;
+    right: -100px;
+    opacity: 0;
+    transition: all 0.5s;
+}
+.highlight {
+    color:#7B68EE;
+    font-weight: 600;
+    position: relative;
+    left: -100px;
+    opacity: 0;
+    transition: all 0.5s;
+}
+.img-gallery-container > li:hover .highlight {
+    left: 0;
+    opacity: 1;
+    transition-delay: 0.1s;
+}
+.img-gallery-container > li:hover button {
+    right: 0;
+    opacity: 1;
+    transition-delay: 0.1s;
+}
+.img-gallery-container > li:hover .content > a {
+    bottom: 0;
+    opacity: 1;
+    transition-delay: 0.1s;
+}
+@media screen and (max-width: 1100px) {
+    .img-gal {
+        height: 300px;
+   }
+}
+@media screen and (max-width: 650px) {
+    .img-gal {
+        height: 225px;
+   }
+}
+@media screen and (max-width: 480px) {
+    .img-gal {
+        height: 125px;
+   }
+}
