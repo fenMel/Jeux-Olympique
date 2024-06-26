@@ -4,7 +4,25 @@ document.addEventListener("DOMContentLoaded", function() {
     const nextButton = document.querySelector('.carousel-control-next');
     let currentIndex = 0;
     let timer; // Variable pour le timer automatique
+    const searchIcon = document.getElementById('search-icon');
+    const searchBar = document.getElementById('search-bar');
+    const searchContainer = document.querySelector('.search-container');
+    
+    searchIcon.addEventListener('click', () => {
+        searchContainer.classList.toggle('active');
+        if (searchContainer.classList.contains('active')) {
+            searchBar.focus();
+        } else {
+            searchBar.blur();
+        }
+    });
 
+    document.addEventListener('click', (event) => {
+        if (!searchContainer.contains(event.target)) {
+            searchContainer.classList.remove('active');
+            searchBar.blur();
+        }
+    });
     function showSlide(index) {
         carouselItems.forEach(item => {
             item.classList.remove('active');
