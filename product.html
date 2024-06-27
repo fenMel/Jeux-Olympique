@@ -27,6 +27,63 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
 
     <style>
+         .popup {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        .popup.active {
+            display: block;
+        }
+        .popup .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+        .popup form {
+            display: flex;
+            flex-direction: column;
+        }
+        .popup form label {
+            margin-top: 10px;
+        }
+        .popup form input {
+            padding: 8px;
+            margin-top: 5px;
+        }
+        .popup form button {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .popup form button:hover {
+            background-color: #45a049;
+        }
+        /* Overlay para el fondo */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+        .overlay.active {
+            display: block;
+        }
         .navbar {
             position: fixed;
         }
@@ -67,9 +124,9 @@
     <nav class="navbar">
         <div class="navbar-left">
             <a href="index.html" class="nav-link">Acceuil</a>           
-                <a href="product.html" class="nav-link">reservation</a>            
+                <a href="product.html" class="nav-link">Reservation</a>            
                 <a href="galerie.html" class="nav-link">Galerie</a>
-            <a href="#" class="nav-link">Blog</a>
+            <a href="blog.html" class="nav-link">Blog</a>
         </div>
         <div class="navbar-center">
             <span class="logo">GOLDSEAT</span>
@@ -108,13 +165,74 @@
             </div>
         </div>
     </nav>
+
+    <div> 
+        <h1 style="text-align: center; margin-top: 15%;">Reserver vous billets</h1>
+    </div>
     <div class="product-detail">
         <img id="productImg" src="" alt="Produit">
         <div class="product-info">
             <h2 id="productTitle">Produit</h2>
             <p>Prix: <span id="productPrice">0.00</span>€</p>
+            <label for="quantity">Quantité:</label>
+            <input type="number" id="quantity" name="quantity" min="1" max="10">
+            <br>
+            <button  id="openPopup">Ajouter au Panier</button>
+            <div id="overlay" class="overlay"></div>
+
+    <div id="popup" class="popup">
+        <span class="close" id="closePopup">&times;</span>
+        <h2>Formulario de Pago</h2>
+        <form id="paymentForm">
+            <label for="name">Nom du titulaire:</label>
+            <input type="text" id="name" name="name" required>
             
-            <button>Ajouter au Panier</button>
+            <label for="cardNumber">Numero de la carte:</label>
+            <input type="text" id="cardNumber" name="cardNumber" required>
+            
+            <label for="expiryDate">Date d'expiration:</label>
+            <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/AA" required>
+            
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv" name="cvv" required>
+            
+            <button type="submit">Payer</button>
+        </form>
+    </div>
+    <script>
+        // Obtener los elementos del DOM
+        const openPopupButton = document.getElementById('openPopup');
+        const closePopupButton = document.getElementById('closePopup');
+        const popup = document.getElementById('popup');
+        const overlay = document.getElementById('overlay');
+        const paymentForm = document.getElementById('paymentForm');
+
+        // Función para abrir el pop-up
+        openPopupButton.addEventListener('click', () => {
+            popup.classList.add('active');
+            overlay.classList.add('active');
+        });
+
+        // Función para cerrar el pop-up
+        closePopupButton.addEventListener('click', () => {
+            popup.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // Cerrar el pop-up al hacer clic en el overlay
+        overlay.addEventListener('click', () => {
+            popup.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // Manejar el envío del formulario
+        paymentForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            alert('Pago realizado con éxito!');
+            popup.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+    </script>
         </div>
     </div>
 
