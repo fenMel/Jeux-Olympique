@@ -102,6 +102,40 @@ form.sign-up-form{
     color: #444;
 
 }
+.nom{
+    width: 100%;
+    height: 50px;
+    background: #f0f0f0;
+    margin: 10px 0;
+    border: 2px solid #0907a4;
+    border-radius: 50px;
+    display: flex;
+    text-align: center;
+   
+}
+.nom input{
+    flex: 5;
+    background: none;
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 600;
+    color: #444;
+    text-align: start;
+    margin-left: 5%;
+
+}
+.input-field{
+    width: 100%;
+    height: 50px;
+    background: #f0f0f0;
+    margin: 10px 0;
+    border: 2px solid #0907a4;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+}
 
 .btn{
     width: 150px;
