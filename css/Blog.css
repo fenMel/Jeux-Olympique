@@ -171,12 +171,60 @@ p {
   }
 }
 
-a {
-  color: #C44D58;
-  font-family: "Dosis", serif;
-  font-weight: 700;
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 20px;
 }
 
+.navbar-left, .navbar-center, .navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar .nav-link, .navbar .nav-icon {
+  padding: 15px;
+  display: inline-block;
+  text-decoration: none;
+  color: black;
+  font-family: Arial, sans-serif;
+}
+
+.navbar .nav-link:hover, .navbar .nav-icon:hover {
+  color: gray;
+}
+
+.navbar .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.navbar .dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Ajustement de la marge supérieure du corps pour éviter le chevauchement avec la barre de navigation */
+body {
+  margin-top: 60px;
+}
+
+/* Style du logo de la marque avec une police en gras et une taille de police spécifique */
+.logo {
+  font-weight: bold;
+  font-size: 24px;
+}
 img {
   height: auto;
   width: 100%;
@@ -257,11 +305,12 @@ body {
     border:none;
   
   }
-  a{
-    color: #010101;
-    font-size: x-large;
-    text-decoration: initial;
-  }
+ 
+  .logo {
+    font-weight: bold;
+    font-size: 24px;
+}
+
   /* Main content layout  */
   .container{
     display: grid; /*active flexbox pour le layout principal*/
@@ -534,7 +583,280 @@ footer a:hover
   opacity: 0.75;
 
 }
+   
 
 
+    .logo {
+      font-weight: bold;
+      font-size: 24px;
+  }
   
 
+/* Styles pour les icônes dans l'en-tête */
+.header__icon, .wishlist-link {
+  display: inline-block;
+  position: relative;
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  color: #000000;
+}
+
+.icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Styles spécifiques pour l'icône de panier vide */
+.icon-cart-empty path {
+  fill: #000000;
+}
+
+/* Styles pour le texte visuellement masqué */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Styles pour le lien de la liste de souhaits */
+.wishlist-link {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  color: black;
+  margin-right: 10px;
+}
+
+.wishlist-link .zemez_wishlist_total__style {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: red;
+  color: white;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1;
+  text-align: center;
+  z-index: 10;
+}
+
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  width: 0;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  transition: width 0.4s ease-in-out;
+  opacity: 0;
+}
+
+.search-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.search-icon img {
+  width: 20px;
+  height: 20px;
+}
+
+.search-container.active .search-input {
+  width: 200px;
+  opacity: 1;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: inline;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-links {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #fff;
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.contact-info {
+  font-size: 14px;
+}
+
+.main-content > div {
+  width: 70%;
+}
+.main-content {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.uk-navbar-nav {
+  justify-content: center;
+  font-family: "Catamaran", sans-serif;
+  gap: 15px;
+  margin-bottom: 35px;
+}
+.uk-navbar-nav > li {
+  padding: 0;
+  min-width: 100px;
+}
+.uk-navbar-nav>li>a {
+  padding: 15px 35px;
+  display: block;
+  background-color: #fff;
+  color: #222;
+  font-size: 15px;
+  min-height: auto;
+  font-weight: 600;
+  box-shadow: 0 0 25px #cccccc42;
+  border-radius: 7px;
+  transition: 0.5s all ease-in-out;
+}
+.uk-navbar-nav>li>a:hover, .uk-navbar-nav>li.uk-active>a {
+  background-color: #7B68EE;
+  color: #fff;
+}
+.img-gallery-container > li {
+  position: relative;
+  padding: 10px;
+  margin-top: 5px !important;
+}
+.img-gal {
+  height: 415px;
+  width: 100%;
+  object-fit: cover;
+  transition: 0.5s all ease-in-out;
+  border-radius: 6px;
+}
+.img-gallery-container > li:hover > img {
+  filter: brightness(0.4) blur(3px);
+}
+.float-gallery-content {
+  position: absolute;
+  width: 90%;
+  z-index: -1;
+  background: #fff;
+  padding: 0;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s all ease-in-out;
+  overflow: hidden;
+}
+.img-gallery-container > li:hover .float-gallery-content {
+  bottom: 20px;
+  opacity: 1;
+  visibility: visible;
+  z-index: 9;
+}
+.uk-block {
+  display: block;
+}
+.float-gallery-content .content {
+  padding: 8px 15px;
+}
+.float-gallery-content .content > a {
+  color: #212121;
+  position: relative;
+  bottom: -50px;
+  opacity: 0;
+  transition: all 0.5s;
+}
+.float-gallery-content .content > a:hover {
+  color: #7B68EE;
+}
+.main-content button {
+  border: 0;
+  height: 100%;
+  padding: 5px 15px;
+  background: #7B68EE;
+  font-size: 30px;
+  color: #fff;
+  position: relative;
+  right: -100px;
+  opacity: 0;
+  transition: all 0.5s;
+}
+.highlight {
+  color:#7B68EE;
+  font-weight: 600;
+  position: relative;
+  left: -100px;
+  opacity: 0;
+  transition: all 0.5s;
+}
+.img-gallery-container > li:hover .highlight {
+  left: 0;
+  opacity: 1;
+  transition-delay: 0.1s;
+}
+.img-gallery-container > li:hover button {
+  right: 0;
+  opacity: 1;
+  transition-delay: 0.1s;
+}
+.img-gallery-container > li:hover .content > a {
+  bottom: 0;
+  opacity: 1;
+  transition-delay: 0.1s;
+}
+@media screen and (max-width: 1100px) {
+  .img-gal {
+      height: 300px;
+ }
+}
+@media screen and (max-width: 650px) {
+  .img-gal {
+      height: 225px;
+ }
+}
+@media screen and (max-width: 480px) {
+  .img-gal {
+      height: 125px;
+ }
+}
