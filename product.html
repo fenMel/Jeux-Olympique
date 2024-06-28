@@ -153,8 +153,8 @@
 
         .cart-popup {
             background-color: white;
-            width: 300px;
-            height: 50%;
+            width: 500px;
+            height: 100%;
             padding: 20px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: relative;
@@ -184,6 +184,23 @@
         .cart-popup a:hover {
             text-decoration: underline;
         }
+        #cartCount{   display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: red;
+    color: white;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+    z-index: 10;
+}
     </style>
 </head>
 <body>
@@ -222,6 +239,7 @@
                     <path d="M14.89 22.75H8.86C5.28 22.75 4.48 20.62 4.17 18.77L2.76 10.12C2.69 9.71 2.97 9.33 3.38 9.26C3.79 9.19 4.17 9.47 4.24 9.88L5.65 18.52C5.94 20.29 6.54 21.25 8.86 21.25H14.89C17.46 21.25 17.75 20.35 18.08 18.61L19.76 9.86C19.84 9.45 20.23 9.18 20.64 9.27C21.05 9.35 21.31 9.74 21.23 10.15L19.55 18.9C19.16 20.93 18.51 22.75 14.89 22.75Z" fill="currentColor"></path>
                 </svg>
                 <span class="visually-hidden">Sac de magasinage</span>
+                <span id="cartCount">0</span>
             </a>
         </div>
     </nav>
@@ -238,7 +256,9 @@
             <br>
             <button class="button" onclick="addToWishlist()" data-img="" data-price="">Ajouter aux Favoris</button>
             <br>
-            <button  id="openPopup">Ajouter au Panier</button>
+            <button id="addToCart" data-img="" data-price="" onclick="addToCart()">Ajouter au Panier</button>
+            <br>
+            <button  id="openPopup">Payer maintenant</button>
             <div id="overlay" class="overlay"></div>
 
             <div id="popup" class="popup">
@@ -421,10 +441,15 @@
                 const addToWishlistButton = document.querySelector('.button[onclick="addToWishlist()"]');
                 addToWishlistButton.setAttribute('data-img', imgSrc);
                 addToWishlistButton.setAttribute('data-price', price);
+
+                const addToCartButton = document.getElementById('addToCart');
+                addToCartButton.setAttribute('data-img', imgSrc);
+                addToCartButton.setAttribute('data-price', price);
             }
 
-            // Mettre à jour le compteur de favoris
+            // Mettre à jour les compteurs de favoris et de panier
             updateWishlistCount();
+            updateCartCount();
         });
 
         function addToWishlist() {
@@ -444,11 +469,35 @@
             updateWishlistCount();
         }
 
+        function addToCart() {
+            const product = {
+                image: document.getElementById('addToCart').getAttribute('data-img'),
+                price: document.getElementById('addToCart').getAttribute('data-price'),
+                quantity: document.getElementById('quantity').value,
+                name: 'Produit' // Vous pouvez ajouter un autre attribut data pour le nom si nécessaire
+            };
+            let cart = localStorage.getItem('cart');
+            cart = cart ? JSON.parse(cart) : [];
+            cart.push(product);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert('Produit ajouté au panier!');
+
+            // Mettre à jour le compteur du panier
+            updateCartCount();
+        }
+
         function updateWishlistCount() {
             let wishlist = localStorage.getItem('wishlist');
             wishlist = wishlist ? JSON.parse(wishlist) : [];
             const wishlistCountElement = document.getElementById('wishlistCount');
             wishlistCountElement.textContent = wishlist.length;
+        }
+
+        function updateCartCount() {
+            let cart = localStorage.getItem('cart');
+            cart = cart ? JSON.parse(cart) : [];
+            const cartCountElement = document.getElementById('cartCount');
+            cartCountElement.textContent = cart.length;
         }
 
         const openPopupButton = document.getElementById('openPopup');
@@ -495,9 +544,10 @@
 
     <div class="cart-popup-overlay" id="cartPopup">
         <div class="cart-popup">
-            <button class="close-btn" onclick="closePopup()"><p>×</p></button>
-            <h2>Votre panier est vide</h2>
-            <button class="achats" onclick="closePopup()">Continuer vos achats</button>
+            <button class="close-btn" onclick="closeCartPopup()"><p>×</p></button>
+            <h2>Votre panier</h2>
+            <div id="cartItems"></div>
+            <button class="achats" onclick="closeCartPopup()">Continuer vos achats</button>
             <a href="connexion.html">Se connecter pour vérifier plus rapidement.</a>
         </div>
     </div>
@@ -506,9 +556,10 @@
         document.getElementById('cart-icon-bubble').addEventListener('click', function(event) {
             event.preventDefault();
             document.getElementById('cartPopup').style.display = 'flex';
+            displayCartItems();
         });
 
-        function closePopup() {
+        function closeCartPopup() {
             document.getElementById('cartPopup').style.display = 'none';
         }
 
@@ -517,6 +568,30 @@
             if (event.target == popup) {
                 popup.style.display = 'none';
             }
+        }
+
+        function displayCartItems() {
+            let cart = localStorage.getItem('cart');
+            cart = cart ? JSON.parse(cart) : [];
+            const cartItemsContainer = document.getElementById('cartItems');
+            cartItemsContainer.innerHTML = '';
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p>Votre panier est vide.</p>';
+                return;
+            }
+
+            cart.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.innerHTML = `
+                    <img src="${item.image}" alt="Produit" style="width: 50px; height: auto;">
+                    <p>${item.name}</p>
+                    <p>Prix: ${item.price}€</p>
+                    <p>Quantité: ${item.quantity}</p>
+                    <hr>
+                `;
+                cartItemsContainer.appendChild(itemElement);
+            });
         }
     </script>
 </body>

@@ -26,6 +26,44 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
 
     <style>
+        #cartCount {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: red;
+            color: white;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            font-size: 12px;
+            font-weight: bold;
+            line-height: 1;
+            text-align: center;
+            z-index: 10;
+        }
+        .cart-popup {
+            background-color: white;
+            width: 500px;
+            height: 100%;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .cart-popup-overlay {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: flex-end;
+            align-items: center;
+            z-index: 1000;
+        }
         .videotitle {
             color: black;
             position: absolute;
@@ -154,26 +192,7 @@
             font-size: 20px;
             cursor: pointer;
         }
-        .cart-popup-overlay {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: none;
-            justify-content: flex-end;
-            align-items: center;
-            z-index: 1000;
-        }
-        .cart-popup {
-            background-color: white;
-            width: 300px;
-            height: 50%;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
+      
         .cart-popup h2 {
             margin-bottom: 20px;
         }
@@ -200,7 +219,7 @@
 <body>
     <nav class="navbar">
         <div class="navbar-left">
-            <a href="#" class="nav-link">Acceuil</a>
+            <a href="index.html" class="nav-link">Acceuil</a>
             <a href="product.html" class="nav-link">Reservation</a>
             <a href="galerie.html" class="nav-link">Galerie</a>
             <a href="blog.html" class="nav-link">Blog</a>
@@ -216,14 +235,14 @@
                 </svg>
                 <span class="icon-text visually-hidden">Log in</span>
             </a>
-            <a href="listeSouhait.html" class="wishlist-link"  title="Favorites">
+            <a href="listeSouhait.html" class="wishlist-link" title="Favorites">
                 <svg width="24" height="24" class="icon icon-heart" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M12 21.6501C11.69 21.6501 11.39 21.6101 11.14 21.5201C7.32 20.2101 1.25 15.5601 1.25 8.6901C1.25 5.1901 4.08 2.3501 7.56 2.3501C9.25 2.3501 10.83 3.0101 12 4.1901C13.17 3.0101 14.75 2.3501 16.44 2.3501C19.92 2.3501 22.75 5.2001 22.75 8.6901C22.75 15.5701 16.68 20.2101 12.86 21.5201C12.61 21.6101 12.31 21.6501 12 21.6501ZM7.56 3.8501C4.91 3.8501 2.75 6.0201 2.75 8.6901C2.75 15.5201 9.32 19.3201 11.63 20.1101C11.81 20.1701 12.2 20.1701 12.38 20.1101C14.68 19.3201 21.26 15.5301 21.26 8.6901C21.26 6.0201 19.1 3.8501 16.45 3.8501C14.93 3.8501 13.52 4.5601 12.61 5.7901C12.33 6.1701 11.69 6.1701 11.41 5.7901C10.48 4.5501 9.08 3.8501 7.56 3.8501Z" fill="currentColor"></path>
                 </svg>
                 <span class="visually-hidden">Favorites</span>
-                <span id="wishlistCount" class="zemez_wishlist_total zemez_wishlist_total__style not-empty">0</span>
+                <span class="zemez_wishlist_total zemez_wishlist_total__style not-empty" id="wishlistCount">0</span>
             </a>
-            <a  class="header__icon header__icon--cart header__icon--cart-empty link focus-inset" id="cart-icon-bubble" role="button" aria-haspopup="dialog"  >
+            <a class="header__icon header__icon--cart header__icon--cart-empty link focus-inset" id="cart-icon-bubble" role="button" aria-haspopup="dialog">
                 <svg class="icon icon-cart-empty" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5.19001 6.37994C5.00001 6.37994 4.8 6.29994 4.66 6.15994C4.37 5.86994 4.37 5.38994 4.66 5.09994L8.29 1.46994C8.58001 1.17994 9.06001 1.17994 9.35001 1.46994C9.64001 1.75994 9.64001 2.23994 9.35001 2.52994L5.72 6.15994C5.57 6.29994 5.38001 6.37994 5.19001 6.37994Z" fill="currentColor"></path>
                     <path d="M18.81 6.37994C18.62 6.37994 18.43 6.30994 18.28 6.15994L14.65 2.52994C14.36 2.23994 14.36 1.75994 14.65 1.46994C14.94 1.17994 15.42 1.17994 15.71 1.46994L19.34 5.09994C19.63 5.38994 19.63 5.86994 19.34 6.15994C19.2 6.29994 19 6.37994 18.81 6.37994Z" fill="currentColor"></path>
@@ -233,6 +252,7 @@
                     <path d="M14.89 22.75H8.86C5.28 22.75 4.48 20.62 4.17 18.77L2.76 10.12C2.69 9.71 2.97 9.33 3.38 9.26C3.79 9.19 4.17 9.47 4.24 9.88L5.65 18.52C5.94 20.29 6.54 21.25 8.86 21.25H14.89C17.46 21.25 17.75 20.35 18.08 18.61L19.76 9.86C19.84 9.45 20.23 9.18 20.64 9.27C21.05 9.35 21.31 9.74 21.23 10.15L19.55 18.9C19.16 20.93 18.51 22.75 14.89 22.75Z" fill="currentColor"></path>
                 </svg>
                 <span class="visually-hidden">Sac de magasinage</span>
+                <span id="cartCount">0</span>
             </a>
         </div>
     </nav>
@@ -371,17 +391,62 @@
     <div class="cart-popup-overlay" id="cartPopup">
         <div class="cart-popup">
             <button class="close-btn" onclick="closePopup()"><p>×</p></button>
-            <h2>Votre panier est vide</h2>
+            <h2>Votre panier</h2>
+            <div id="cartItems"></div>
             <button class="achats" onclick="closePopup()">Continuer vos achats</button>
             <a href="connexion.html">Se connecter pour vérifier plus rapidement.</a>
         </div>
     </div>
 
     <script>
-        // JavaScript pour afficher et masquer la popup
+         function openProductDetail(img, price) {
+            localStorage.setItem('productImg', img);
+            localStorage.setItem('productPrice', price);
+            window.location.href = 'product.html';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const price = localStorage.getItem('productPrice');
+            const imgSrc = localStorage.getItem('productImg');
+            if (price && imgSrc) {
+                document.getElementById('productPrice').textContent = price + '€';
+                document.getElementById('productImg').setAttribute('src', imgSrc);
+
+                const addToWishlistButton = document.querySelector('.button[onclick="addToWishlist()"]');
+                addToWishlistButton.setAttribute('data-img', imgSrc);
+                addToWishlistButton.setAttribute('data-price', price);
+
+                const addToCartButton = document.getElementById('addToCart');
+                addToCartButton.setAttribute('data-img', imgSrc);
+                addToCartButton.setAttribute('data-price', price);
+            }
+
+            // Mettre à jour les compteurs de favoris et de panier
+            updateWishlistCount();
+            updateCartCount();
+        });
+
+        function addToWishlist() {
+            const product = {
+                image: document.querySelector('.button[onclick="addToWishlist()"]').getAttribute('data-img'),
+                price: document.querySelector('.button[onclick="addToWishlist()"]').getAttribute('data-price'),
+                quantity: document.getElementById('quantity').value,
+                name: 'Produit' // Vous pouvez ajouter un autre attribut data pour le nom si nécessaire
+            };
+            let wishlist = localStorage.getItem('wishlist');
+            wishlist = wishlist ? JSON.parse(wishlist) : [];
+            wishlist.push(product);
+            localStorage.setItem('wishlist', JSON.stringify(wishlist));
+            alert('Produit ajouté aux favoris!');
+
+            // Mettre à jour le compteur de favoris
+            updateWishlistCount();
+        }
+        // JavaScript pour afficher et masquer la popup du panier
         document.getElementById('cart-icon-bubble').addEventListener('click', function(event) {
             event.preventDefault();
             document.getElementById('cartPopup').style.display = 'flex';
+            displayCartItems(); // Afficher les articles du panier lorsque la popup s'ouvre
         });
 
         function closePopup() {
@@ -395,15 +460,65 @@
             }
         }
 
-        // Mettre à jour le compteur de favoris
+        // Function to update wishlist count
         function updateWishlistCount() {
-            const wishlist = localStorage.getItem('wishlist');
-            const wishlistCount = wishlist ? JSON.parse(wishlist).length : 0;
-            document.getElementById('wishlistCount').textContent = wishlistCount;
+            const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            document.getElementById('wishlistCount').textContent = wishlist.length;
         }
 
-        // Appeler la fonction lors du chargement de la page
+        // Update wishlist count on page load
         document.addEventListener('DOMContentLoaded', updateWishlistCount);
+
+        // Function to update cart count
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            document.getElementById('cartCount').textContent = cart.length;
+        }
+
+        // Update cart count on page load
+        document.addEventListener('DOMContentLoaded', updateCartCount);
+
+        // Function to display cart items
+        function displayCartItems() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItemsContainer = document.getElementById('cartItems');
+            cartItemsContainer.innerHTML = '';
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p>Votre panier est vide.</p>';
+                return;
+            }
+
+            cart.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.innerHTML = `
+                    <img src="${item.image}" alt="Produit" style="width: 50px; height: auto;">
+                    <p>${item.name}</p>
+                    <p>Prix: ${item.price}€</p>
+                    <p>Quantité: ${item.quantity}</p>
+                    <hr>
+                `;
+                cartItemsContainer.appendChild(itemElement);
+            });
+        }
+
+        // Function to add item to cart
+        function addToCart() {
+            const product = {
+                image: document.getElementById('addToCart').getAttribute('data-img'),
+                price: document.getElementById('addToCart').getAttribute('data-price'),
+                quantity: document.getElementById('quantity').value,
+                name: 'Produit' // Vous pouvez ajouter un autre attribut data pour le nom si nécessaire
+            };
+            let cart = localStorage.getItem('cart');
+            cart = cart ? JSON.parse(cart) : [];
+            cart.push(product);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert('Produit ajouté au panier!');
+
+            // Mettre à jour le compteur du panier
+            updateCartCount();
+        }
     </script>
 </body>
 </html>
