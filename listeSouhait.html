@@ -16,6 +16,36 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
 
     <style>
+        .cart-popup-overlay {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: flex-end;
+            align-items: center;
+            z-index: 1000;
+        }
+        #cartCount {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: red;
+            color: white;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            font-size: 12px;
+            font-weight: bold;
+            line-height: 1;
+            text-align: center;
+            z-index: 10;
+        }
         .wishlist_page {
             padding: 20px;
         }
@@ -145,22 +175,10 @@
             font-size: 20px;
             cursor: pointer;
         }
-        .cart-popup-overlay {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: none;
-            justify-content: flex-end;
-            align-items: center;
-            z-index: 1000;
-        }
         .cart-popup {
             background-color: white;
-            width: 300px;
-            height: 50%;
+            width: 500px;
+            height: 100%;
             padding: 20px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: relative;
@@ -191,7 +209,7 @@
 <body>
     <nav class="navbar">
         <div class="navbar-left">
-            <a href="index.html" class="nav-link">Acceuil</a>
+            <a href="index.html" class="nav-link">Accueil</a>
             <a href="product.html" class="nav-link">Reservation</a>
             <a href="galerie.html" class="nav-link">Galerie</a>
             <a href="blog.html" class="nav-link">Blog</a>
@@ -200,6 +218,13 @@
             <span class="logo">GOLDSEAT</span>
         </div>
         <div class="navbar-right">
+            <a class="header__icon header__icon--account link focus-inset small-hide">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" focusable="false" class="icon icon-account" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 12.75C8.83 12.75 6.25 10.17 6.25 7C6.25 3.83 8.83 1.25 12 1.25C15.17 1.25 17.75 3.83 17.75 7C17.75 10.17 15.17 12.75 12 12.75ZM12 2.75C9.66 2.75 7.75 4.66 7.75 7C7.75 9.34 9.66 11.25 12 11.25C14.34 11.25 16.25 9.34 16.25 7C16.25 4.66 14.34 2.75 12 2.75Z" fill="currentColor"></path>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M20.5901 22.75C20.1801 22.75 19.8401 22.41 19.8401 22C19.8401 18.55 16.3202 15.75 12.0002 15.75C7.68015 15.75 4.16016 18.55 4.16016 22C4.16016 22.41 3.82016 22.75 3.41016 22.75C3.00016 22.75 2.66016 22.41 2.66016 22C2.66016 17.73 6.85015 14.25 12.0002 14.25C17.1502 14.25 21.3401 17.73 21.3401 22C21.3401 22.41 21.0001 22.75 20.5901 22.75Z" fill="currentColor"></path>
+                </svg>
+                <span class="icon-text visually-hidden">Log in</span>
+            </a>
             <a href="listeSouhait.html" class="wishlist-link" title="Favorites">
                 <svg width="24" height="24" class="icon icon-heart" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M12 21.6501C11.69 21.6501 11.39 21.6101 11.14 21.5201C7.32 20.2101 1.25 15.5601 1.25 8.6901C1.25 5.1901 4.08 2.3501 7.56 2.3501C9.25 2.3501 10.83 3.0101 12 4.1901C13.17 3.0101 14.75 2.3501 16.44 2.3501C19.92 2.3501 22.75 5.2001 22.75 8.6901C22.75 15.5701 16.68 20.2101 12.86 21.5201C12.61 21.6101 12.31 21.6501 12 21.6501ZM7.56 3.8501C4.91 3.8501 2.75 6.0201 2.75 8.6901C2.75 15.5201 9.32 19.3201 11.63 20.1101C11.81 20.1701 12.2 20.1701 12.38 20.1101C14.68 19.3201 21.26 15.5301 21.26 8.6901C21.26 6.0201 19.1 3.8501 16.45 3.8501C14.93 3.8501 13.52 4.5601 12.61 5.7901C12.33 6.1701 11.69 6.1701 11.41 5.7901C10.48 4.5501 9.08 3.8501 7.56 3.8501Z" fill="currentColor"></path>
@@ -217,6 +242,7 @@
                     <path d="M14.89 22.75H8.86C5.28 22.75 4.48 20.62 4.17 18.77L2.76 10.12C2.69 9.71 2.97 9.33 3.38 9.26C3.79 9.19 4.17 9.47 4.24 9.88L5.65 18.52C5.94 20.29 6.54 21.25 8.86 21.25H14.89C17.46 21.25 17.75 20.35 18.08 18.61L19.76 9.86C19.84 9.45 20.23 9.18 20.64 9.27C21.05 9.35 21.31 9.74 21.23 10.15L19.55 18.9C19.16 20.93 18.51 22.75 14.89 22.75Z" fill="currentColor"></path>
                 </svg>
                 <span class="visually-hidden">Sac de magasinage</span>
+                <span id="cartCount">0</span>
             </a>
         </div>
     </nav>
@@ -236,10 +262,15 @@
         </div>
     </div>
     <div id="wishlistProducts" class="wishlist-products"></div>
-</div>
+    <div class="cart-popup-overlay" id="cartPopup">
+        <div class="cart-popup">
+            <button class="close-btn" onclick="closePopup()"><p>×</p></button>
+            <h2>Votre panier</h2>
+            <div id="cartItems"></div>
+            <button class="achats" onclick="closePopup()">Continuer vos achats</button>
+            <a href="connexion.html">Se connecter pour vérifier plus rapidement.</a>
+        </div>
     </div>
-    
-
     <svg xmlns="http://www.w3.org/2000/svg" id="svg5" version="1.1" viewBox="0 0 502.98 108.61" >
         <path id="heart" d="M213.35 29.43c19.41-15.19 33.68 10.86 37.73 18.82-.28-13.61 11.64-40.98 25.94-34.01 32.3 15.74-15.88 83.8-26.4 81.76-13.24-9-51.35-53.3-37.27-66.57Z" style="fill:#ff9999;stroke:#ff9999;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
         <path  pathLength="1" id="line" d="M5.32 78.13c.96-.01 5-8.5 5.54-8.54.58-.05 6.1 8.51 7.1 8.51 3.66 0 9.29.06 10.71.05 2.53-.01 4.82-72.88 4.82-72.88l4.76 97.28 3.97-24.45 20.45-.22C64 77.86 77.1 63.66 78.36 63.8c1.31.15 6.68 14.08 7.94 14.07 2.3-.03 33.32.04 35.76.02.96 0 5-8.5 5.53-8.53.59-.05 6.1 8.51 7.1 8.5 3.66 0 9.3.07 10.72.06 2.53-.02 4.81-72.89 4.81-72.89l4.77 97.28 3.97-24.44s83.34-3.33 74.69 7.67c-8.65 11-45.3-42.94-31.65-53.58 25.6-19.96 49.96 36.94 40.26 36.5-12.2-.53 1.8-62.32 23.41-51.7 32.24 15.86-17.56 84.92-26.4 81.77-5.73-2.05-.68-21.68 31.4-26.58 26.65-6.42 29.5 2.35 52.62 7.11 2.53-.02 4.82-72.89 4.82-72.89l4.76 97.28 3.97-24.44 20.45-.23c1.31-.02 14.41-14.22 15.68-14.07 1.32.15 6.7 14.08 7.95 14.07 2.29-.03 33.32.04 35.76.02.95 0 5-8.5 5.53-8.54.58-.04 6.1 8.52 7.1 8.52 3.66 0 9.3.06 10.72.05 2.53-.02 4.81-72.89 4.81-72.89l4.77 97.28 3.97-24.44 20.45-.23c1.31-.01 14.41-14.22 15.68-14.07 1.32.16 6.69 14.09 7.94 14.07" />
@@ -257,6 +288,7 @@
         </div>
     </div>
 </footer>
+
 <script>
    // Variable globale pour suivre le nombre de favoris
    let wishlistCount = 0;
@@ -339,25 +371,64 @@
     document.getElementById('cart-icon-bubble').addEventListener('click', function(event) {
         event.preventDefault();
         document.getElementById('cartPopup').style.display = 'flex';
+        displayCartItems(); // Afficher les articles du panier lorsque la popup s'ouvre
     });
 
     function closePopup() {
         document.getElementById('cartPopup').style.display = 'none';
     }
+
     window.onclick = function(event) {
         var popup = document.getElementById('cartPopup');
         if (event.target == popup) {
             popup.style.display = 'none';
         }
     }
+
+    function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        document.getElementById('cartCount').textContent = cart.length;
+    }
+
+    document.addEventListener('DOMContentLoaded', updateCartCount);
+
+    function displayCartItems() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartItemsContainer = document.getElementById('cartItems');
+        cartItemsContainer.innerHTML = '';
+
+        if (cart.length === 0) {
+            cartItemsContainer.innerHTML = '<p>Votre panier est vide.</p>';
+            return;
+        }
+
+        cart.forEach(item => {
+            const itemElement = document.createElement('div');
+            itemElement.innerHTML = `
+                <img src="${item.image}" alt="Produit" style="width: 50px; height: auto;">
+                <p>${item.name}</p>
+                <p>Prix: ${item.price}€</p>
+                <p>Quantité: ${item.quantity}</p>
+                <hr>
+            `;
+            cartItemsContainer.appendChild(itemElement);
+        });
+    }
+
+    function addToCart() {
+        const product = {
+            image: document.getElementById('addToCart').getAttribute('data-img'),
+            price: document.getElementById('addToCart').getAttribute('data-price'),
+            quantity: document.getElementById('quantity').value,
+            name: 'Produit'
+        };
+        let cart = localStorage.getItem('cart');
+        cart = cart ? JSON.parse(cart) : [];
+        cart.push(product);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert('Produit ajouté au panier!');
+
+        updateCartCount();
+    }
 </script>
-<script src="script_img.js"></script>
-<div class="cart-popup-overlay" id="cartPopup">
-    <div class="cart-popup">
-        <button class="close-btn" onclick="closePopup()"><p>×</p></button>
-        <h2>Votre panier est vide</h2>
-        <button class="achats" onclick="closePopup()">Continuer vos achats</button>
-        <a href="connexion.html">Se connecter pour vérifier plus rapidement.</a>
-    </div>
-</div>
 </html>
