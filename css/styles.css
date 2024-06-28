@@ -238,18 +238,36 @@ body {
 footer {
     background-color: #333;
     color: #fff;
-    padding: 20px;
+    padding: 20px 0;
     text-align: center;
 }
 
-footer a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 10px;
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: inline;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-footer a:hover {
+.footer-links {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-links a:hover {
     text-decoration: underline;
+}
+
+.contact-info {
+    font-size: 14px;
 }
 
 .main-content > div {
