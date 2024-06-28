@@ -184,23 +184,46 @@
         .cart-popup a:hover {
             text-decoration: underline;
         }
-        #cartCount{   display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    background-color: red;
-    color: white;
-    height: 20px;
-    width: 20px;
-    border-radius: 50%;
-    font-size: 12px;
-    font-weight: bold;
-    line-height: 1;
-    text-align: center;
-    z-index: 10;
-}
+        #cartCount {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: red;
+            color: white;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            font-size: 12px;
+            font-weight: bold;
+            line-height: 1;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .cart-item img {
+            width: 50px;
+            height: auto;
+            margin-right: 10px;
+        }
+        .cart-item-info {
+            flex: 1;
+        }
+        .cart-item-remove {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -581,17 +604,29 @@
                 return;
             }
 
-            cart.forEach(item => {
+            cart.forEach((item, index) => {
                 const itemElement = document.createElement('div');
+                itemElement.classList.add('cart-item');
                 itemElement.innerHTML = `
-                    <img src="${item.image}" alt="Produit" style="width: 50px; height: auto;">
-                    <p>${item.name}</p>
-                    <p>Prix: ${item.price}€</p>
-                    <p>Quantité: ${item.quantity}</p>
-                    <hr>
+                    <img src="${item.image}" alt="Produit">
+                    <div class="cart-item-info">
+                        <p>${item.name}</p>
+                        <p>Prix: ${item.price}€</p>
+                        <p>Quantité: ${item.quantity}</p>
+                    </div>
+                    <button class="cart-item-remove" onclick="removeFromCart(${index})">Supprimer</button>
                 `;
                 cartItemsContainer.appendChild(itemElement);
             });
+        }
+
+        function removeFromCart(index) {
+            let cart = localStorage.getItem('cart');
+            cart = cart ? JSON.parse(cart) : [];
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCartItems();
+            updateCartCount();
         }
     </script>
 </body>
