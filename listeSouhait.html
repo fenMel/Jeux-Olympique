@@ -287,6 +287,9 @@
                 <span id="cartCount">0</span>
             </a>
         </div>
+        <div class="menu">
+            <img src="img/menu_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg" alt="menu">
+        </div>
     </nav>
     <div class="page-width wishlist_page wishlist-empty" template-wishlist-page-js="">
         <h1 class="section_heading center">Liste de souhaits</h1>
@@ -485,5 +488,13 @@
         updateCartCount();
         displayCartItems();
     }
+</script>
+<script>
+    const menuHamburger = document.querySelector(".menu")
+    const navLinks = document.querySelector(".navbar-left")
+
+    menuHamburger.addEventListener('click',()=>{
+    navLinks.classList.toggle('mobile-menu')
+    })
 </script>
 </html>
