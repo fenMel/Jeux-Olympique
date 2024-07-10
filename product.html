@@ -265,6 +265,9 @@
                 <span id="cartCount">0</span>
             </a>
         </div>
+        <div class="menu">
+                <img src="img/menu_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg" alt="menu">
+            </div>
     </nav>
     <div> 
         <h1 style="text-align: center; margin-top: 15%;">Reserver vous billets</h1>
@@ -274,7 +277,7 @@
         <div class="product-info">
             <h2 id="productTitle">Produit</h2>
             <p>Prix: <span id="productPrice">0.00</span></p>
-            <label for="quantity">Quantité:</label>
+            <label for="quantity" >Quantité:</label>
             <input type="number" id="quantity" name="quantity" min="1" max="10">
             <br>
             <button class="button" onclick="addToWishlist()" data-img="" data-price="">Ajouter aux Favoris</button>
@@ -628,6 +631,14 @@
             displayCartItems();
             updateCartCount();
         }
+    </script>
+    <script>
+        const menuHamburger = document.querySelector(".menu")
+        const navLinks = document.querySelector(".navbar-left")
+    
+        menuHamburger.addEventListener('click',()=>{
+        navLinks.classList.toggle('mobile-menu')
+        })
     </script>
 </body>
 </html>
