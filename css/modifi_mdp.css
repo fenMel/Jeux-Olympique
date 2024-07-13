@@ -70,11 +70,51 @@ input[type="submit"]:hover {
 }
 /* img */
 img {
-    width: 500px;
+    width: 550px;
     height: auto;
 }
 
 h1 {
     color: #0c0644;
     text-align: center;
+}
+@media (max-width: 768px) {
+    .form-container {
+        flex-direction: column;
+    }
+    input[type="text"] {
+        width: 80%;
+    }
+    .mdp {
+        margin-right: 0;
+        margin-bottom: 20px;
+        width: 90%;
+        box-sizing: border-box;
+    }
+
+    img {
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .mdp {
+        padding: 10px;
+        width: 90%;
+    }
+
+    img {
+       display: none;
+    }
+
+    input[type="text"] {
+        width: 80%;
+    }
+
+    input[type="submit"] {
+        width: 100%;
+    }
+    .mdp_m{
+        width: 100;
+    }
 }
