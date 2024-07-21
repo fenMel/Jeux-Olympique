@@ -302,18 +302,23 @@
                 <span class="logo">GOLDSEAT</span>
             </div>
             <div class="navbar-right">
-                <a href="connexion.html" class="header__icon header__icon--account link focus-inset small-hide">
+                <a href="connexion.html" class="header__icon header__icon--account link focus-inset small-hide" id="account-link">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" focusable="false"
-                        class="icon icon-account" xmlns="http://www.w3.org/2000/svg">
+                         class="icon icon-account" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M12 12.75C8.83 12.75 6.25 10.17 6.25 7C6.25 3.83 8.83 1.25 12 1.25C15.17 1.25 17.75 3.83 17.75 7C17.75 10.17 15.17 12.75 12 12.75ZM12 2.75C9.66 2.75 7.75 4.66 7.75 7C7.75 9.34 9.66 11.25 12 11.25C14.34 11.25 16.25 9.34 16.25 7C16.25 4.66 14.34 2.75 12 2.75Z"
-                            fill="currentColor"></path>
+                              d="M12 12.75C8.83 12.75 6.25 10.17 6.25 7C6.25 3.83 8.83 1.25 12 1.25C15.17 1.25 17.75 3.83 17.75 7C17.75 10.17 15.17 12.75 12 12.75ZM12 2.75C9.66 2.75 7.75 4.66 7.75 7C7.75 9.34 9.66 11.25 12 11.25C14.34 11.25 16.25 9.34 16.25 7C16.25 4.66 14.34 2.75 12 2.75Z"
+                              fill="currentColor"></path>
                         <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M20.5901 22.75C20.1801 22.75 19.8401 22.41 19.8401 22C19.8401 18.55 16.3202 15.75 12.0002 15.75C7.68015 15.75 4.16016 18.55 4.16016 22C4.16016 22.41 3.82016 22.75 3.41016 22.75C3.00016 22.75 2.66016 22.41 2.66016 22C2.66016 17.73 6.85015 14.25 12.0002 14.25C17.1502 14.25 21.3401 17.73 21.3401 22C21.3401 22.41 21.0001 22.75 20.5901 22.75Z"
-                            fill="currentColor"></path>
+                              d="M20.5901 22.75C20.1801 22.75 19.8401 22.41 19.8401 22C19.8401 18.55 16.3202 15.75 12.0002 15.75C7.68015 15.75 4.16016 18.55 4.16016 22C4.16016 22.41 3.82016 22.75 3.41016 22.75C3.00016 22.75 2.66016 22.41 2.66016 22C2.66016 17.73 6.85015 14.25 12.0002 14.25C17.1502 14.25 21.3401 17.73 21.3401 22C21.3401 22.41 21.0001 22.75 20.5901 22.75Z"
+                              fill="currentColor"></path>
                     </svg>
                     <span class="icon-text visually-hidden">Log in</span>
                 </a>
+                <div id="user-menu" style="display:none;">
+                    <a href="deconnexion.html" id="logout-link">Déconnexion</a>
+                    <a href="parametres.html" id="settings-link">Paramètres</a>
+                </div>
+                
                 <a href="listeSouhait.html" class="wishlist-link" title="Favorites">
                     <svg width="24" height="24" class="icon icon-heart" viewBox="0 0 24 24" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
@@ -626,148 +631,7 @@
             </div>
     </div>
 
-    <script>
-        function openProductDetail(img, price) {
-            localStorage.setItem('productImg', img);
-            localStorage.setItem('productPrice', price);
-            window.location.href = 'product.html';
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const price = localStorage.getItem('productPrice');
-            const imgSrc = localStorage.getItem('productImg');
-            if (price && imgSrc) {
-                document.getElementById('productPrice').textContent = price + '€';
-                document.getElementById('productImg').setAttribute('src', imgSrc);
-
-                const addToWishlistButton = document.querySelector('.button[onclick="addToWishlist()"]');
-                addToWishlistButton.setAttribute('data-img', imgSrc);
-                addToWishlistButton.setAttribute('data-price', price);
-
-                const addToCartButton = document.getElementById('addToCart');
-                addToCartButton.setAttribute('data-img', imgSrc);
-                addToCartButton.setAttribute('data-price', price);
-            }
-
-            // Mettre à jour les compteurs de favoris et de panier
-            updateWishlistCount();
-            updateCartCount();
-        });
-
-        function addToWishlist() {
-            const product = {
-                image: document.querySelector('.button[onclick="addToWishlist()"]').getAttribute('data-img'),
-                price: document.querySelector('.button[onclick="addToWishlist()"]').getAttribute('data-price'),
-                quantity: document.getElementById('quantity').value,
-                name: 'Produit' // Vous pouvez ajouter un autre attribut data pour le nom si nécessaire
-            };
-            let wishlist = localStorage.getItem('wishlist');
-            wishlist = wishlist ? JSON.parse(wishlist) : [];
-            wishlist.push(product);
-            localStorage.setItem('wishlist', JSON.stringify(wishlist));
-            alert('Produit ajouté aux favoris!');
-
-            // Mettre à jour le compteur de favoris
-            updateWishlistCount();
-        }
-        // JavaScript pour afficher et masquer la popup du panier
-        document.getElementById('cart-icon-bubble').addEventListener('click', function (event) {
-            event.preventDefault();
-            document.getElementById('cartPopup').style.display = 'flex';
-            displayCartItems(); // Afficher les articles du panier lorsque la popup s'ouvre
-        });
-
-        function closePopup() {
-            document.getElementById('cartPopup').style.display = 'none';
-        }
-
-        window.onclick = function (event) {
-            var popup = document.getElementById('cartPopup');
-            if (event.target == popup) {
-                popup.style.display = 'none';
-            }
-        }
-
-        // Function to update wishlist count
-        function updateWishlistCount() {
-            const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-            document.getElementById('wishlistCount').textContent = wishlist.length;
-        }
-
-        // Update wishlist count on page load
-        document.addEventListener('DOMContentLoaded', updateWishlistCount);
-
-        // Function to update cart count
-        function updateCartCount() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            document.getElementById('cartCount').textContent = cart.length;
-        }
-
-        // Update cart count on page load
-        document.addEventListener('DOMContentLoaded', updateCartCount);
-
-        // Function to display cart items
-        function displayCartItems() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const cartItemsContainer = document.getElementById('cartItems');
-            cartItemsContainer.innerHTML = '';
-
-            if (cart.length === 0) {
-                cartItemsContainer.innerHTML = '<p>Votre panier est vide.</p>';
-                return;
-            }
-
-         
-            cart.forEach((item, index) => {
-                const itemElement = document.createElement('div');
-                itemElement.classList.add('cart-item');
-                itemElement.innerHTML = `
-                    <img src="${item.image}" alt="Produit">
-                    <div class="cart-item-info">
-                        <p>${item.name}</p>
-                        <p>Prix: ${item.price}€</p>
-                        <p>Quantité: ${item.quantity}</p>
-                    </div>
-                    <button class="cart-item-remove" onclick="removeFromCart(${index})">Supprimer</button>
-                `;
-                cartItemsContainer.appendChild(itemElement);
-            });
-        }
-        function removeFromCart(index) {
-            let cart = localStorage.getItem('cart');
-            cart = cart ? JSON.parse(cart) : [];
-            cart.splice(index, 1);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            displayCartItems();
-            updateCartCount();
-        }
-        // Function to add item to cart
-        function addToCart() {
-            const product = {
-                image: document.getElementById('addToCart').getAttribute('data-img'),
-                price: document.getElementById('addToCart').getAttribute('data-price'),
-                quantity: document.getElementById('quantity').value,
-                name: 'Produit' // Vous pouvez ajouter un autre attribut data pour le nom si nécessaire
-            };
-            let cart = localStorage.getItem('cart');
-            cart = cart ? JSON.parse(cart) : [];
-            cart.push(product);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            alert('Produit ajouté au panier!');
-
-            // Mettre à jour le compteur du panier
-            updateCartCount();
-        }
-    </script>
-    <script>
-        const menuHamburger = document.querySelector(".menu")
-        const navLinks = document.querySelector(".navbar-left")
-
-        menuHamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('mobile-menu')
-        })
-    </script>
-
+    <script src="scriptGeneral.js"></script>
 </body>
 
 </html>

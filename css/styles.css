@@ -508,3 +508,10 @@ footer {
     cursor: pointer;
     border-radius: 5px;
 }
+#user-menu {
+    display: none;
+}
+
+#user-menu.show {
+    display: block;
+}
