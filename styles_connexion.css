@@ -1,10 +1,11 @@
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
-
+ 
 body{
     display: flex;
     align-items: center;
@@ -12,7 +13,16 @@ body{
     min-height: 100vh;
     background: #444;
 }
-
+.close-btn {            
+    position: absolute;            
+    top: 10px;            
+    right: 10px;            
+    background: none;            
+    border: none;            
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 6;
+}
 .container{
     position: relative;
     width: 70vw;
@@ -34,7 +44,7 @@ body{
     transform: translateX(100%);
     transition: 1s ease-in-out;
 }
-
+ 
 .signin-signup{
     position: absolute;
     top: 0;
@@ -46,7 +56,7 @@ body{
     justify-content: space-around;
     z-index: 5;
 }
-
+ 
 form{
     display: flex;
     align-items: center;
@@ -60,21 +70,21 @@ form.sign-in-form{
     opacity: 1;
     transition: 0.5s ease-in-out;
     transition-delay: 1s;
-    
+   
 }
 form.sign-up-form{
     opacity: 0;
     transition: 0.5s ease-in-out;
     transition-delay: 1s;
-    
+   
 }
-
+ 
 .title{
     font-size: 35px;
     color: #ed4f10;
     margin-bottom: 10px;
 }
-
+ 
 .input-field{
     width: 100%;
     height: 50px;
@@ -100,7 +110,7 @@ form.sign-up-form{
     font-size: 18px;
     font-weight: 600;
     color: #444;
-
+ 
 }
 .nom{
     width: 100%;
@@ -124,7 +134,7 @@ form.sign-up-form{
     color: #444;
     text-align: start;
     margin-left: 5%;
-
+ 
 }
 .input-field{
     width: 100%;
@@ -136,7 +146,7 @@ form.sign-up-form{
     display: flex;
     align-items: center;
 }
-
+ 
 .btn{
     width: 150px;
     height: 50px;
@@ -148,12 +158,12 @@ form.sign-up-form{
     margin: 10px 0;
     text-transform: uppercase;
     cursor: pointer;
-
+ 
 }
 .btn:hover{
     background-color: #0907a4;
 }
-
+ 
 .social-text{
     margin: 10px 0;
     font-size: 16px;
@@ -173,16 +183,16 @@ form.sign-up-form{
     border-radius: 50px;
     margin: 0 5px;
 }
-
+ 
 a{
     text-decoration: none;
 }
-
+ 
 .social-icon:hover{
     color: #0907a4;
     border: #0907a4;
 }
-
+ 
 .panels-container{
     position: absolute;
     top: 0;
@@ -207,13 +217,13 @@ a{
 .left-panel{
     pointer-events:none;
 }
-
+ 
 .content{
     color: white;
     transition: 1.1s ease-in-out;
     transition-delay: 0.5s;
 }
-
+ 
 .panel h3{
     font-size: 24px;
     font-weight: 600;
@@ -222,14 +232,14 @@ a{
     font-size: 15px;
     padding: 10px 0;
 }
-
+ 
 .image{
-    width: 100%;   
+    width: 100%;  
     transition: 1.1s ease-in-out;
     transition-delay: 0.4s;
 }
-
-
+ 
+ 
 .left-panel .image,
 .left-panel .content{
     transform: translateX(-200%);
@@ -237,13 +247,13 @@ a{
 .right-panel .image,
 .right-panel .content{
     transform: translateX(0);
-    
+   
 }
 .account-text{
     display: none;
 }
 /* Animation*/
-
+ 
 .container.sign-up-mode::before{
     transform: translateX(0);
 }
@@ -297,13 +307,19 @@ a{
     .account-text{
         display: initial;
     }
-
+ 
 }
 @media(max-width:320px){
     form{
         width: 90%;
         margin-top: 30px;
     }
-
+ 
 }
-
+ 
+ 
+ 
+ 
+ 
+ 
+ 
