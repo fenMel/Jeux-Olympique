@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page d'Aide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(220, 215, 215);
+        }
+
+        .container {
+            position: relative;
+            width: 50%;
+            margin: 5%;
+            overflow: hidden;
+            padding: 20px;
+            height: 40%;
+           
+            left: 20%;
+           
+        
+        }
+
+        .search-bar {
+            margin-bottom: 20px;
+        }
+
+        .search-bar input[type="text"] {
+            position: relative;
+            width: 50%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            border-radius: 20px;
+            left: 25%;
+            top: 10%;
+           
+        }
+
+        h2 h3{
+            color: #333;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            background: #f4f4f4;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: #ccc 1px solid;
+            cursor: pointer;
+        }
+
+        ul li:hover {
+            background: #e4e4e4;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+            
+
+        }
+        #ret{
+            color: white;
+        }
+
+        .retour {
+            box-sizing: border-box;
+            background-color: blue;
+            border-radius: 5px;
+            width: 90px;
+            height: 40px;
+            font-size: 20px;
+            text-align: center;
+            margin-top: 50px;
+
+
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 100%;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+        <div class="container">
+            <div class="search-bar">
+                <input type="text" id="search" placeholder="Posez votre question...">
+            </div>
+        <h2>Besoin d'aide?</h2>
+        <h3>FAQS utiles</h3>
+        
+        <ul id="question">
+            <a href="">
+            <li>Comment créer un compte ?</li>
+        </a>
+        <a href="">
+            <li>Comment réinitialiser mon mot de passe ?</li>
+        </a>
+        <a href="">
+            <li>Comment contacter le support technique ?</li>
+        </a>
+        <a href="">
+            <li>Comment mettre à jour mes informations personnelles ?</li>
+        </a>
+        <a href="">
+            <li>Comment supprimer mon compte ?</li>
+        </a>
+        </ul>
+    <div  class="retour">
+        <a id="ret" href="parametre.html"> Retour </a>
+    </div>
+</div>
+
+    <script>
+        document.getElementById('search').addEventListener('keyup', function () {
+            let filter = this.value.toUpperCase();
+            let faqList = document.getElementById('question');
+            let faqItems = faqList.getElementsByTagName('li');
+
+            for (let i = 0; i < faqItems.length; i++) {
+                let txtValue = faqItems[i].textContent || faqItems[i].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    faqItems[i].style.display = "";
+                } else {
+                    faqItems[i].style.display = "none";
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
