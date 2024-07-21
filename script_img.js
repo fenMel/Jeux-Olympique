@@ -3,26 +3,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const prevButton = document.querySelector('.carousel-control-prev');
     const nextButton = document.querySelector('.carousel-control-next');
     let currentIndex = 0;
-    let timer; // Variable pour le timer automatique
-    const searchIcon = document.getElementById('search-icon');
-    const searchBar = document.getElementById('search-bar');
-    const searchContainer = document.querySelector('.search-container');
-    
-    searchIcon.addEventListener('click', () => {
-        searchContainer.classList.toggle('active');
-        if (searchContainer.classList.contains('active')) {
-            searchBar.focus();
-        } else {
-            searchBar.blur();
-        }
-    });
+    let timer;
 
-    document.addEventListener('click', (event) => {
-        if (!searchContainer.contains(event.target)) {
-            searchContainer.classList.remove('active');
-            searchBar.blur();
-        }
-    });
     function showSlide(index) {
         carouselItems.forEach(item => {
             item.classList.remove('active');
@@ -47,31 +29,28 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function startCarousel() {
-        timer = setInterval(nextSlide, 4000); // Changer d'image toutes les 4 secondes
+        timer = setInterval(nextSlide, 4000);
     }
 
     function stopCarousel() {
         clearInterval(timer);
     }
 
-    // Initialisation de l'affichage
     showSlide(currentIndex);
-    startCarousel(); // Démarrer le carrousel automatique
+    startCarousel();
 
-    // Gestion des événements des boutons de contrôle
     nextButton.addEventListener('click', () => {
         nextSlide();
-        stopCarousel(); // Arrêter le carrousel automatique lorsqu'on navigue manuellement
-        startCarousel(); // Redémarrer le carrousel automatique après la navigation manuelle
+        stopCarousel();
+        startCarousel();
     });
+
     prevButton.addEventListener('click', () => {
         prevSlide();
-        stopCarousel(); // Arrêter le carrousel automatique lorsqu'on navigue manuellement
-        startCarousel(); // Redémarrer le carrousel automatique après la navigation manuelle
+        stopCarousel();
+        startCarousel();
     });
 
-    // Gestion automatique du carrousel
-    document.querySelector('.carousel').addEventListener('mouseover', stopCarousel); // Arrêter le carrousel en survol
-    document.querySelector('.carousel').addEventListener('mouseout', startCarousel); // Redémarrer le carrousel à la sortie du survol
-
+    document.querySelector('.carousel').addEventListener('mouseover', stopCarousel);
+    document.querySelector('.carousel').addEventListener('mouseout', startCarousel);
 });
