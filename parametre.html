@@ -36,7 +36,7 @@
 
                
 
-                <li>
+                <li id="password-link"> <!-- Added ID for targeting -->
                     <a href="#">
                         <span class="icon">
                             <ion-icon name="lock-closed-outline"></ion-icon>
@@ -83,7 +83,9 @@
                     <a href="index.html">ACCUEIL</a>
                 </div>
             </div>
-
+            <div id="dynamic-content">
+               
+               
             <!-- ======================= Cards ================== -->
             <div class="cardBox">
                 <div class="card">
@@ -243,13 +245,27 @@
             </div>
         </div>
     </div>
-
+</div>
     <!-- =========== Scripts =========  -->
     <script src="parametre.js"></script>
 
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+   
+    <!-- =========== Custom Script =========  -->
+    <script>
+        document.getElementById('password-link').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+
+            fetch('changement_mdp.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('dynamic-content').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading the page:', error));
+        });
+    </script>
 </body>
 
 </html>

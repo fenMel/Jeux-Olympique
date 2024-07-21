@@ -1,5 +1,5 @@
 /* Style for the body */
-body {
+/* body {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
     display: flex;
@@ -7,7 +7,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-}
+} */
 
 /* Container for centering content */
 .container {
@@ -18,7 +18,8 @@ body {
 .form-container {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    margin-left: 200px;
 }
 
 /* Container for the password form */
@@ -76,7 +77,9 @@ img {
 
 h1 {
     color: #0c0644;
-    text-align: center;
+    margin-right: 1500px;
+    margin-top: 105px;
+
 }
 @media (max-width: 768px) {
     .form-container {
