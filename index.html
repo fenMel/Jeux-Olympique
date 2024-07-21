@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
-
+ 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,12 +15,12 @@
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.19.2/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.19.2/dist/js/uikit-icons.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.min.css">
-
+ 
     <!-- jQuery and Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+ 
     <!-- jQuery and Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
@@ -45,7 +45,7 @@
             text-align: center;
             z-index: 10;
         }
-
+ 
         .cart-popup {
             background-color: white;
             width: 500px;
@@ -54,7 +54,7 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: relative;
         }
-
+ 
         .cart-popup-overlay {
             position: fixed;
             top: 0;
@@ -67,7 +67,7 @@
             align-items: center;
             z-index: 1000;
         }
-
+ 
         .videotitle {
             color: black;
             position: absolute;
@@ -81,12 +81,12 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             background-color: #2f2e2eac;
         }
-
+ 
         .diapo {
             position: relative;
             overflow: hidden;
         }
-
+ 
         #nav-droite,
         #nav-gauche {
             position: absolute;
@@ -97,29 +97,29 @@
             cursor: pointer;
             user-select: none;
         }
-
+ 
         #nav-droite {
             right: 20px;
         }
-
+ 
         #nav-gauche {
             left: 20px;
         }
-
+ 
         .elements {
             display: flex;
             transition: transform 1s linear;
         }
-
+ 
         .element {
             min-width: 100%;
             position: relative;
         }
-
+ 
         .element img {
             width: 100%;
         }
-
+ 
         .caption {
             position: absolute;
             top: 50%;
@@ -129,21 +129,21 @@
             background-color: rgba(255, 255, 255, 0.4);
             padding: 30px;
         }
-
+ 
         .product {
             display: flex;
             margin-bottom: 20px;
         }
-
+ 
         .product img {
             width: 200px;
             height: auto;
         }
-
+ 
         .product-info {
             margin-left: 20px;
         }
-
+ 
         .product-info button {
             margin-top: 10px;
             padding: 10px 20px;
@@ -152,14 +152,14 @@
             border: none;
             cursor: pointer;
         }
-
+ 
         footer {
             background-color: #333;
             color: #fff;
             padding: 20px 0;
             text-align: center;
         }
-
+ 
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -168,26 +168,26 @@
             align-items: center;
             justify-content: center;
         }
-
+ 
         .footer-links {
             margin-bottom: 10px;
         }
-
+ 
         .footer-links a {
             color: #fff;
             margin: 0 10px;
             text-decoration: none;
             font-size: 14px;
         }
-
+ 
         .footer-links a:hover {
             text-decoration: underline;
         }
-
+ 
         .contact-info {
             font-size: 14px;
         }
-
+ 
         .ml2 {
            
             position: absolute;
@@ -199,14 +199,14 @@
             font-weight: 900;
             font-size: 3.5em;
         }
-
+ 
         .ml2 .letter {
             display: inline-block;
             line-height: 2em;
             color: rgb(2, 1, 15);
             font-size: 70px;
         }
-
+ 
         .close-btn {
             position: absolute;
             top: 10px;
@@ -216,11 +216,11 @@
             font-size: 20px;
             cursor: pointer;
         }
-
+ 
         .cart-popup h2 {
             margin-bottom: 20px;
         }
-
+ 
         .achats {
             background-color: #C8102E;
             color: white;
@@ -230,68 +230,68 @@
             border-radius: 5px;
             width: 100%;
         }
-
+ 
         .cart-popup a {
             display: block;
             margin-top: 20px;
             color: #007BFF;
             text-decoration: none;
         }
-
+ 
         .cart-popup a:hover {
             text-decoration: underline;
         }
-
+ 
         .text-introduction {
             box-sizing: border-box;
             border: 2 solid blue;
-
+ 
         }
-
+ 
         .intro {
             font-family: 'Times New Roman';
-
+ 
         }
-
+ 
         @media (min-width: 768px) {
             .container-about {
                 flex-direction: row;
             }
-
+ 
             .ml2 {
                 font-weight: 100;
             }
-
+ 
             .image-about {
                 width: 35%;
             }
-
+ 
             .text-about {
                 margin-left: 25px;
             }
         }
-
+ 
         @media (max-width: 767px) {
-
-
-
+ 
+ 
+ 
             .container-about {
                 flex-direction: column;
                 text-align: center;
             }
-
+ 
             .text-about {
                 margin-left: 0;
-
+ 
             }
         }
     </style>
 </head>
-
+ 
 <body>
     <div class="navBar">
         <nav class="navbar">
-
+ 
             <div class="navbar-left">
                 <a href="index.html" class="nav-link">Accueil</a>
                 <a href="product.html" class="nav-link">Reservation</a>
@@ -355,10 +355,10 @@
                 <img src="img/menu_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg" alt="menu">
             </div>
         </nav>
-
+ 
     </div>
-
-
+ 
+ 
     <div id="carouselExampleDark" class="carousel carousel-dark slide">
         <div class="carousel-inner">
             <div class="carousel-item active" data-bs-interval="10000">
@@ -372,121 +372,121 @@
             </div>
         </div>
     </div>
-
+ 
     <main>
         <div class="introduction">
             <h1 style="text-align: center; margin-top: 10%;" class="ml2">Bienvenue aux JO 2024 !</h1>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
             <div>
-
-
-
+ 
+ 
+ 
                 <style>
                     .container-about {
-
+ 
                         display: flex;
-
+ 
                         width: x;
-
+ 
                         height: 2x;
-
+ 
                         margin: 50px auto;
-
+ 
                         padding: 20px;
-
+ 
                         border: 1px solid #ccc;
-
+ 
                         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
                        
                         margin-top: 30%;
-
+ 
                     }
-
-
-
+ 
+ 
+ 
                     .image-about {
-
+ 
                         width: 35%;
-
+ 
                         left: 10%;
-
+ 
                         box-sizing: border-box;
-
+ 
                         position: relative;
-
-
-
+ 
+ 
+ 
                     }
-
-
-
-
+ 
+ 
+ 
+ 
                     .text-about {
-
+ 
                         flex: 1;
-
+ 
                         /* Take the remaining space */
-
+ 
                         margin-left: 25%;
-
+ 
                         text-align: justify;
-
+ 
                         box-sizing: border-box;
-
+ 
                         position: relative;
-
+ 
                         right: 10%;
-
+ 
                     }
                 </style>
-
-
-
+ 
+ 
+ 
                 <div class="container-about">
-
+ 
                     <img src="img/gif.gif" alt="Image" class="image-about">
 
                     <div class="text-about" id="apropos">
 
                         <h2 class="intro" style="text-align: center; margin-top: 5%; color: rgb(64, 111, 242);">
-
+ 
                             ABOUT US </h2>
-                            
-
+                           
+ 
                         <p class="P" style="line-height: 30px;  margin-top: 10%;"> Nous sommes ravis de vous accueillir
                             sur notre site officiel de réservation de
-
+ 
                             billets pour les Jeux Olympiques 2024. Ce site a été spécialement conçu pour vous offrir
-
+ 
                             une expérience de réservation fluide et agréable, afin que vous puissiez assister aux
-
+ 
                             événements les plus passionnants de cette compétition mondiale.
-
+ 
                             Que vous soyez un fan de longue date des Jeux Olympiques ou que vous découvriez cet
-
+ 
                             événement pour la première fois, nous avons tout ce dont vous avez besoin pour planifier
-
+ 
                             votre visite. Explorez notre calendrier des événements, découvrez les sites
-
+ 
                             emblématiques, et réservez vos billets en quelques clics seulement.
-
+ 
                             Merci de nous rejoindre pour célébrer l'excellence sportive et l'esprit olympique. Nous
-
+ 
                             avons hâte de partager avec vous des moments inoubliables !</p>
-
+ 
                     </div>
-
-
+ 
+ 
                 </div>
                 <div>
                     <img src="img/deco.png" alt="">
                 </div>
                    
-              
-
+             
+ 
            
-
-
+ 
+ 
                 <div class="main-content">
                     <div uk-filter="target: .js-filter">
                         <br><br>
@@ -503,7 +503,7 @@
                             });
                             var textWrapper = document.querySelector('.ml2');
                             textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
+ 
                             anime.timeline({ loop: true })
                                 .add({
                                     targets: '.ml2 .letter',
@@ -521,7 +521,7 @@
                                     delay: 1000
                                 });
                         </script>
-
+ 
                         <div class="card mb-3" style="max-width: 100%;">
                             <div class="row g-0">
                                 <div class="col-md-4">
@@ -542,7 +542,7 @@
                             </div>
                         </div>
                         <br><br>
-
+ 
                         <div class="card mb-3" style="max-width: 100%;" ;>
                             <div class="row g-0">
                                 <div class="col-md-8">
@@ -599,7 +599,7 @@
                         </div>
                     </div>
                 </div>
-                
+               
     </main>
     <footer>
         <div class="footer-content">
@@ -625,35 +625,35 @@
                  <a href="connexion.html">Se connecter pour vérifier plus rapidement.</a>
             </div>
     </div>
-
+ 
     <script>
         function openProductDetail(img, price) {
             localStorage.setItem('productImg', img);
             localStorage.setItem('productPrice', price);
             window.location.href = 'product.html';
         }
-
+ 
         document.addEventListener('DOMContentLoaded', () => {
             const price = localStorage.getItem('productPrice');
             const imgSrc = localStorage.getItem('productImg');
             if (price && imgSrc) {
                 document.getElementById('productPrice').textContent = price + '€';
                 document.getElementById('productImg').setAttribute('src', imgSrc);
-
+ 
                 const addToWishlistButton = document.querySelector('.button[onclick="addToWishlist()"]');
                 addToWishlistButton.setAttribute('data-img', imgSrc);
                 addToWishlistButton.setAttribute('data-price', price);
-
+ 
                 const addToCartButton = document.getElementById('addToCart');
                 addToCartButton.setAttribute('data-img', imgSrc);
                 addToCartButton.setAttribute('data-price', price);
             }
-
+ 
             // Mettre à jour les compteurs de favoris et de panier
             updateWishlistCount();
             updateCartCount();
         });
-
+ 
         function addToWishlist() {
             const product = {
                 image: document.querySelector('.button[onclick="addToWishlist()"]').getAttribute('data-img'),
@@ -666,7 +666,7 @@
             wishlist.push(product);
             localStorage.setItem('wishlist', JSON.stringify(wishlist));
             alert('Produit ajouté aux favoris!');
-
+ 
             // Mettre à jour le compteur de favoris
             updateWishlistCount();
         }
@@ -676,47 +676,47 @@
             document.getElementById('cartPopup').style.display = 'flex';
             displayCartItems(); // Afficher les articles du panier lorsque la popup s'ouvre
         });
-
+ 
         function closePopup() {
             document.getElementById('cartPopup').style.display = 'none';
         }
-
+ 
         window.onclick = function (event) {
             var popup = document.getElementById('cartPopup');
             if (event.target == popup) {
                 popup.style.display = 'none';
             }
         }
-
+ 
         // Function to update wishlist count
         function updateWishlistCount() {
             const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
             document.getElementById('wishlistCount').textContent = wishlist.length;
         }
-
+ 
         // Update wishlist count on page load
         document.addEventListener('DOMContentLoaded', updateWishlistCount);
-
+ 
         // Function to update cart count
         function updateCartCount() {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             document.getElementById('cartCount').textContent = cart.length;
         }
-
+ 
         // Update cart count on page load
         document.addEventListener('DOMContentLoaded', updateCartCount);
-
+ 
         // Function to display cart items
         function displayCartItems() {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             const cartItemsContainer = document.getElementById('cartItems');
             cartItemsContainer.innerHTML = '';
-
+ 
             if (cart.length === 0) {
                 cartItemsContainer.innerHTML = '<p>Votre panier est vide.</p>';
                 return;
             }
-
+ 
          
             cart.forEach((item, index) => {
                 const itemElement = document.createElement('div');
@@ -754,7 +754,7 @@
             cart.push(product);
             localStorage.setItem('cart', JSON.stringify(cart));
             alert('Produit ajouté au panier!');
-
+ 
             // Mettre à jour le compteur du panier
             updateCartCount();
         }
@@ -762,12 +762,13 @@
     <script>
         const menuHamburger = document.querySelector(".menu")
         const navLinks = document.querySelector(".navbar-left")
-
+ 
         menuHamburger.addEventListener('click', () => {
             navLinks.classList.toggle('mobile-menu')
         })
     </script>
-
+ 
 </body>
-
+ 
 </html>
+ 
