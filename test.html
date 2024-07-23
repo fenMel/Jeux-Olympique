@@ -1,10 +1,140 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Menu Hamburger Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #232f3e;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .navbar .greeting {
+            display: flex;
+            align-items: center;
+        }
+        .navbar .greeting img {
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .navbar .greeting span {
+            font-size: 16px;
+        }
+        .menu-icon {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+        .menu-icon span {
+            display: block;
+            height: 4px;
+            background-color: white;
+            border-radius: 2px;
+        }
+        .menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            overflow-y: auto;
+            z-index: 1000;
+        }
+        .menu.open {
+            display: block;
+        }
+        .menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .menu ul li {
+            border-bottom: 1px solid #ccc;
+        }
+        .menu ul li a {
+            display: block;
+            padding: 10px 20px;
+            color: #333;
+            text-decoration: none;
+        }
+        .menu ul li a:hover {
+            background-color: #f2f2f2;
+        }
+        .section-title {
+            font-weight: bold;
+            padding: 10px 20px;
+        }
+        .menu-header {
+            background-color: #232f3e;
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .menu-header img {
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .menu-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-  
+
+<div class="navbar">
+    <div class="menu-icon" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="greeting">
+        <img src="https://via.placeholder.com/24" alt="User">
+        <span>Bonjour, Identifiez-vous</span>
+    </div>
+</div>
+
+<div class="menu" id="menu">
+    <div class="menu-header">
+        <img src="https://via.placeholder.com/24" alt="User">
+        <span>Bonjour, Identifiez-vous</span>
+        <span class="menu-close" onclick="toggleMenu()">×</span>
+    </div>
+    <ul>
+        <li class="section-title">Tendances</li>
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#">Réservation</a></li>
+        <li><a href="#">Galerie</a></li>
+        <li><a href="#">Blog</a></li>
+    </ul>
+</div>
+
+<script>
+    function toggleMenu() {
+        document.getElementById('menu').classList.toggle('open');
+    }
+</script>
+
+</body>
 </html>
+```

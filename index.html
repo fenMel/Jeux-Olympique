@@ -188,24 +188,26 @@
             font-size: 14px;
         }
 
+
         .ml2 {
-           
-            position: absolute;
-            top: 90%;
-            left: 50%;
-            transform: translate(-50%, 51%);
+            position: static;
+            top: 30%;
+            left: 50%; 
+            /* transform: translate(35%); */
             z-index: 1;
             text-align: center;
             font-weight: 900;
             font-size: 3.5em;
+            margin-left: 20%;
+            margin-right: 20%;
         }
 
-        .ml2 .letter {
-            display: inline-block;
+        .ml2 {
+            display: inline-block; 
             line-height: 2em;
             color: rgb(2, 1, 15);
             font-size: 70px;
-        }
+        } */
 
         .close-btn {
             position: absolute;
@@ -302,7 +304,7 @@
                 <span class="logo">GOLDSEAT</span>
             </div>
             <div class="navbar-right">
-                <a href="connexion.html" class="header__icon header__icon--account link focus-inset small-hide">
+                <a href="connexion.html" class="header__icon header__icon--account link focus-inset small-hide icon-large">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" focusable="false"
                         class="icon icon-account" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -314,7 +316,7 @@
                     </svg>
                     <span class="icon-text visually-hidden">Log in</span>
                 </a>
-                <a href="listeSouhait.html" class="wishlist-link" title="Favorites">
+                <a href="listeSouhait.html" class="wishlist-link icon-large" title="Favorites">
                     <svg width="24" height="24" class="icon icon-heart" viewBox="0 0 24 24" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -324,7 +326,7 @@
                     <span class="visually-hidden">Favorites</span>
                     <span class="zemez_wishlist_total zemez_wishlist_total__style not-empty" id="wishlistCount">0</span>
                 </a>
-                <a class="header__icon header__icon--cart header__icon--cart-empty link focus-inset"
+                <a class="header__icon header__icon--cart header__icon--cart-empty link focus-inset icon-large"
                     id="cart-icon-bubble" role="button" aria-haspopup="dialog">
                     <svg class="icon icon-cart-empty" aria-hidden="true" focusable="false" viewBox="0 0 24 24"
                         fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -354,6 +356,9 @@
             <div class="menu">
                 <img src="img/menu_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg" alt="menu">
             </div>
+            <div class="logo2">
+                <img src="img/5326827.png" alt="logo2" class="imglogo">
+            </div>
         </nav>
 
     </div>
@@ -375,7 +380,7 @@
 
     <main>
         <div class="introduction">
-            <h1 style="text-align: center; margin-top: 10%;" class="ml2">Bienvenue aux JO 2024 !</h1>
+            <h1 class="ml2">Bienvenue aux JO 2024 !</h1>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
             <div>
 

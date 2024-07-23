@@ -6,6 +6,10 @@ body, html {
     height: 100%;
 }
 
+main {
+    margin: auto;
+}
+
 /* Style de la barre de navigation fixée en haut de la page */
 .navbar {
     position: fixed;
@@ -21,18 +25,28 @@ body, html {
     padding: 0 20px;
 }
 
-.navbar-left, .navbar-center, .navbar-right {
+.navbar-left, .navbar-center, .navbar-right { 
     display: flex;
     align-items: center;
 }
 
-.navbar .nav-link, .navbar .nav-icon {
+ .navbar .nav-link, .navbar .nav-icon { 
     padding: 15px;
     display: inline-block;
     text-decoration: none;
     color: black;
     font-family: Arial, sans-serif;
-}
+} 
+
+/* 
+    .navlink{ 
+    color: red;
+    border: 2px solid #000;
+    width: 100%;
+    margin-top: -760px;
+    text-align: center;
+} 
+*/
 
 .navbar .nav-link:hover, .navbar .nav-icon:hover {
     color: gray;
@@ -59,7 +73,21 @@ body, html {
 .mobile-menu{
     margin-left: 0;;
 }
-
+.imglogo{
+    width: 30px;
+    margin-top: -10px;
+}
+.logo2{
+    display: none;
+}
+.icon-large svg {
+    width: 24px;
+    height: 24px;
+  }
+  .ml2 .introduction{
+    text-align: center !important;
+    margin: auto;
+}
 @media  (max-width: 767px){
     .navbar {
         height: 42px;
@@ -72,17 +100,18 @@ body, html {
         flex-direction: column;    
         background-color: rgba(149, 149, 149, 0.552);
         top :0;
-        width: 50%;
+        width: 35%;
         height: 100vh;
         justify-content: center;
             backdrop-filter:blur(7px);
             margin-left: -100%;
+            margin-top: -200px;
     }
    .navbar-left.mobile-menu{
         margin-left: 0;;
     }
-    .navbar .nav-link{
-        color: #000000a4;
+     .navbar .nav-link{
+        color: #000000a4; 
         font-size:25px;
     }
    
@@ -111,13 +140,74 @@ body, html {
     }
     .menu {
         display: block;
-        margin-bottom: 5px;
-        
+        margin-bottom: 10px;
+    }
+    .logo2{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
     }
     .logo{
-        margin-right: 150px;
+        display: none;
     }
+    .nav-link{ 
+        border: 2px solid #000 !important;
+        width: 100%;
+        margin: 50px 0 -52px 0;
+        text-align: center;
+        padding: 15px;
+        font-size: 20px!important;
+    } 
+   
+   
 }
+    
+@media  (max-width: 428px){
+    .logo2{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+    .logo{
+        display: none;
+    }
+    .icon-large svg {
+        width: 25px;
+        height: 25px;
+        min-width: 25px;
+        min-height: 25px;
+    }
+    .navbar-left{
+        margin-top: -200px;
+        width: 40%;
+    }
+    .introduction{
+      /* padding: 20px;
+       margin-top: 30%; 
+       margin-bottom: 30%;  */
+       color: #000;
+    }
+
+    .container-about{
+        margin-top:1000px;
+    
+    }
+    .ml2{
+        font-size: 20px!important;
+        /* margin-bottom: 20px; 
+        text-align: center;
+        top: -10px;
+        /* margin-left: 160px;
+        width: 100%;
+        margin-left: 20%;
+        margin-right: 50%; */
+        
+    } 
+
+}
+
 
 
 
