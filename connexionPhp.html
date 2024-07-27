@@ -2,23 +2,29 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatibile" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/059128c34f.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="styles_connexion.css">
-    <title>Connexion</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatibile" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://kit.fontawesome.com/059128c34f.js" crossorigin="anonymous">
+	</script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="styles_connexion.css">
+	<title>Connexion</title>
 </head>
 
 <body>
-    <div class="container">
-        <div class="signin-signup">
-            <form action="process_form.php" method="POST" class="sign-in-form">
-                <h2 class="title">Connexion</h2>
-                <div class="input-field">
-                    <i class="fas fa-user"></i>
+	<div class="container">
+		<div class="close-btn">
+			<a href="index.html">×</a>
+		</div>
+		<div class="signin-signup">
+
+			<form action="process_form.php" method="POST" class="sign-in-form">
+
+				<h2 class="title">Connexion</h2>
+				<div class="input-field">
+					<i class="fas fa-user"></i>
                     <input type="text" name="username_or_email" placeholder="E-mail or Nom d'Utilisateur">
                 </div>
                 <div class="input-field">
@@ -85,10 +91,7 @@
             <div class="panel left-panel">
                 <div class="content">
                     <h3>Membre de GoldSeat?</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, asperiores excepturi nihil neque
-                        perferendis dignissimos corrupti itaque repellat mollitia pariatur odio modi ipsum perspiciatis
-                        sed
-                        ratione alias exercitationem odit consequatur?
+                    <p> Connectez-vous pour accéder à votre compte et profiter pleinement de nos services.
                     </p>
                     <button class="btn" id="sign-in-btn">Se connecter</button>
                 </div>
@@ -97,10 +100,7 @@
             <div class="panel right-panel">
                 <div class="content">
                     <h3>Rejoignez GoldSeat</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, asperiores excepturi nihil neque
-                        perferendis dignissimos corrupti itaque repellat mollitia pariatur odio modi ipsum perspiciatis
-                        sed
-                        ratione alias exercitationem odit consequatur?
+                    <p>Créez un compte pour bénéficier de tous nos avantages exclusifs.
                     </p>
                     <button class="btn" id="sign-up-btn">S'inscrire</button>
                 </div>
@@ -109,6 +109,23 @@
         </div>
     </div>
     <script src="apps.js"></script>
+    <script>
+// Fonction pour définir l'état de connexion de l'utilisateur dans le stockage local
+function setLoginStatus() {
+    localStorage.setItem('isLoggedIn', 'true');
+    window.location.href = 'index.html'; // Redirige vers la page d'accueil après connexion
+}
+
+// Ajoutez un écouteur d'événement pour le formulaire de connexion
+document.querySelector('.sign-in-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Empêche l'envoi par défaut du formulaire
+
+    // Ici vous pouvez ajouter une vérification côté client des identifiants de connexion
+    // Ensuite, soumettre le formulaire via AJAX ou directement en fonction des résultats
+    // Pour cet exemple, nous allons directement définir l'état de connexion
+    setLoginStatus();
+});
+</script>
 
 </body>
 

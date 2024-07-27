@@ -1,0 +1,279 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: 'Quicksand', sans-serif;
+}
+
+body {
+	height: 100vh;
+	width: 100%;
+	max-height: max-content;
+}
+
+.container {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 20px 100px;
+	transform: scale(1.5);
+	transform-origin: center;
+}
+a {
+    text-decoration: none;
+}
+.container:after {
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	background: url("/fondFootContact.jpeg") no-repeat center;
+	background-color: rgba(255, 255, 255, 0.8);
+	background-size: cover;
+	filter: blur(50px);
+	z-index: -1;
+	
+}
+
+.contact-box {
+	max-width: 750px;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	background-color: #fff;
+	box-shadow: 0px 0px 19px 5px rgba(0,0,0,0.19);
+	position: relative;
+}
+
+.left {
+	/* background: url("flameJO.jpeg") no-repeat center; */
+	background-size: cover;
+	height: 100%;
+	background :  url("/flameJO.jpeg")no-repeat center;
+}
+
+.right {
+	padding: 25px 40px;
+}
+
+h2 {
+	position: relative;
+	padding: 0 0 10px;
+	margin-bottom: 10px;
+}
+
+h2:after {
+	content: '';
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	transform: translateX(-50%);
+	height: 4px;
+	width: 70px;
+	border-radius: 5px;
+	background-color: #24ba68;
+}
+
+.field {
+	width: 100%;
+	border: 2px solid rgba(0, 0, 0, 0);
+	outline: none;
+	background-color: rgba(230, 230, 230, 0.6);
+	padding: 0.5rem 1rem;
+	font-size: 1.1rem;
+	margin-bottom: 22px;
+	transition: .3s;
+}
+
+.field:hover {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+textarea {
+	min-height: 150px;
+}
+
+.btn {
+	width: 100%;
+	padding: 0.5rem 1rem;
+	background-color: #23c662;
+	color: #fff;
+	font-size: 1.1rem;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	transition: .3s;
+}
+
+.btn:hover {
+	background-color: #ae27a5;
+}
+
+.field:focus {
+	border: 2px solid rgba(30,85,250,0.47);
+	background-color: #fff;
+}
+
+.close-btn {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	font-size: 20px;
+	cursor: pointer;
+	color: #fff;
+	background-color: #ff0000;
+	padding: 5px 10px;
+	border-radius: 50%;
+	transition: background-color 0.3s ease;
+}
+
+.close-btn:hover {
+	background-color: #cc0000;
+}
+.left {
+	position: relative;
+	background: url("/flameJO.jpeg") no-repeat center;
+	background-size: cover;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: #fff;
+	text-align: center;
+}
+
+.left::before {
+	content: "Goldseat!";
+	font-family: 'Quicksand', sans-serif;
+	font-size: 4rem;
+	font-weight: 500;
+	color: #fff solid;
+	opacity: 0;
+	animation: fadeIn 2s forwards;
+	margin-bottom: 30px;
+}
+
+.left::after {
+	content: " Pour bénéficier de notre assistance, merci de compléter le formulaire de contact. Notre équipe se fera un plaisir de vous aider !.";
+	font-family: 'Quicksand', sans-serif;
+	font-weight: 700 normal;
+	font-size: 1.2rem;
+	color: #fff solid;
+	opacity: 0;
+	animation: fadeIn 2s forwards 1s;
+}
+
+/*petite transition*/
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+
+@media screen and (max-width: 880px) {
+	.left::before {
+		font-size: 2.5rem;
+	}
+
+	.left::after {
+		font-size: 1.2rem;
+	}
+}
+
+
+/* Responsivité */
+@media screen and (max-width: 880px) {
+	.container {
+		padding: 20px;
+		transform: scale(1);
+	}
+
+	.contact-box {
+		grid-template-columns: 1fr;
+		max-width: 100%;
+		box-shadow: none;
+	}
+
+	.left {
+		height: 200px;
+		background-size: cover;
+	}
+
+	.right {
+		padding: 20px;
+	}
+
+	h2 {
+		font-size: 1.5rem;
+	}
+
+	.field {
+		font-size: 1rem;
+	}
+
+	.btn {
+		font-size: 1rem;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.container {
+		padding: 10px;
+		transform: scale(1);
+	}
+
+	.right {
+		padding: 15px;
+	}
+
+	h2 {
+		font-size: 1.2rem;
+	}
+
+	.field {
+		font-size: 0.9rem;
+		padding: 0.5rem;
+	}
+
+	.btn {
+		font-size: 0.9rem;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.container {
+		padding: 5px;
+		transform: scale(1);
+	}
+
+	.right {
+		padding: 10px;
+	}
+
+	h2 {
+		font-size: 1rem;
+	}
+
+	.field {
+		font-size: 0.8rem;
+		padding: 0.4rem;
+	}
+
+	.btn {
+		font-size: 0.8rem;
+	}
+}

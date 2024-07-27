@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Admin Dashboard | Korsat X Parmaga</title>
     <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="parametre.css">
+    <link rel="stylesheet" href="css/parametre.css">
 </head>
 
 <body>
@@ -37,7 +37,7 @@
                
 
                 <li id="password-link"> <!-- Added ID for targeting -->
-                    <a href="#">
+                    <a href="changement_mdp.php">
                         <span class="icon">
                             <ion-icon name="lock-closed-outline"></ion-icon>
                         </span>
@@ -55,7 +55,7 @@
                 </li>
 
                 <li>
-                    <a href="deconnexion.html">
+                    <a href="deconnexion.php">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>
@@ -80,7 +80,7 @@
                 </div>
 
                 <div class="Accueil">
-                    <a href="index.html">ACCUEIL</a>
+                    <a href="index.php">ACCUEIL</a>
                 </div>
             </div>
             <div id="dynamic-content">
@@ -258,7 +258,7 @@
         document.getElementById('password-link').addEventListener('click', function(event) {
             event.preventDefault(); // Prevent default link behavior
 
-            fetch('changement_mdp.html')
+            fetch('changement_mdp.php')
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('dynamic-content').innerHTML = data;
@@ -266,6 +266,127 @@
                 .catch(error => console.error('Error loading the page:', error));
         });
     </script>
+ <script src="parametre.js"></script>
+
+
+
+    <!-- ====== ionicons ======= -->
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+   
+
+    <!-- =========== Custom Script =========  -->
+
+    <script>
+
+        document.getElementById('password-link').addEventListener('click', function(event) {
+
+            event.preventDefault(); // Prevent default link behavior
+
+
+
+            const formHtml = `
+
+                <div class="container">
+
+                    <div class="mdp_m">
+
+                        <h1>Modifier votre mot de passe</h1>
+
+                    </div>
+
+                    <form id="change-password-form" action="change-p.php" method="post">
+
+                        <div class="form-container">
+
+                            <div class="mdp">
+
+                                <div class="mdp_actual">
+
+                                    <label for="Amdp">Votre mot de passe actuel :</label>
+
+                                    <input type="password" id="Amdp" name="Amdp" placeholder="Votre mot de passe actuel" required>
+
+                                </div>
+
+                                <div class="mdp_nv">
+
+                                    <label for="Nmdp">Nouveau mot de passe :</label>
+
+                                    <input type="password" id="Nmdp" name="Nmdp" placeholder="Nouveau mot de passe" required>
+
+                                </div>
+
+                                <div class="mdp_nv_confirm">
+
+                                    <label for="CNmdp">Confirmer votre mot de passe :</label>
+
+                                    <input type="password" id="CNmdp" name="CNmdp" placeholder="Confirmer votre mot de passe" required>
+
+                                </div>
+
+                                <input type="submit" value="Soumettre">
+
+                            </div>
+
+                            <div>
+
+                                <img src="img/security.gif" alt="Image de sécurité">
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            `;
+
+
+
+            document.getElementById('dynamic-content').innerHTML = formHtml;
+
+
+
+            // Add event listener to the newly added form
+
+            const form = document.getElementById('change-password-form');
+
+            form.addEventListener('submit', function(event) {
+
+                event.preventDefault(); // Prevent default form submission for testing
+
+
+
+                // Log form data for debugging
+
+                console.log('Form submitted!');
+
+                console.log('Current Password:', form.Amdp.value);
+
+                console.log('New Password:', form.Nmdp.value);
+
+                console.log('Confirm Password:', form.CNmdp.value);
+
+
+
+                // Remove the preventDefault and proceed with actual form submission
+
+                form.submit();
+
+            });
+
+        });
+
+    </script>
+
+
+
+
 </body>
 
 </html>

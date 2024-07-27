@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Réservation Billets JO</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css'>
+    <link rel="stylesheet" href="css/faq.css">
+</head>
+<body>
+<main>
+    <section class="card">
+      <img src="https://raw.githubusercontent.com/MizAndhre/FAQ-accordion-card/2ff2a02d093554f14d0390a409e825669313a16e/images/illustration-box-desktop.svg" alt="Box" class="card__box" />
+      <div class="card__img">
+        <img class="card__img-mobile" src="https://raw.githubusercontent.com/MizAndhre/FAQ-accordion-card/2ff2a02d093554f14d0390a409e825669313a16e/images/illustration-woman-online-mobile.svg" alt="Woman online Mobile" />
+        <img class="card__img-desktop" src="https://raw.githubusercontent.com/MizAndhre/FAQ-accordion-card/2ff2a02d093554f14d0390a409e825669313a16e/images/illustration-woman-online-desktop.svg" alt="Woman online desktop" />
+      </div>
+            <div class="close-btn" id="closebutton"><a href="index.php">✖</a></div>
+
+      <div class="card__text">
+        <h1>UNE QUESTION ? CONSULTEZ NOTRE FAQ</h1>
+          <!-- Catégorie : Réservation des billets -->
+          <div class="accordion__item">
+            <button class="accordion__title">Comment puis-je réserver des billets pour les JO ? <i class="fas fa-chevron-down"></i></button>
+            <div class="accordion__collapse collapse">
+              <div class="accordion__text">
+                <p>Vous pouvez réserver des billets en ligne via notre site officiel. Assurez-vous de créer un compte pour suivre vos réservations.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__title">Combien de billets puis-je acheter à la fois ? <i class="fas fa-chevron-down"></i></button>
+            <div class="accordion__collapse collapse">
+              <div class="accordion__text">
+                <p>Vous pouvez acheter jusqu'à 10 billets par transaction. Pour les groupes plus importants, veuillez contacter notre service client.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__title">Puis-je choisir mes sièges lors de la réservation ? <i class="fas fa-chevron-down"></i></button>
+            <div class="accordion__collapse collapse">
+              <div class="accordion__text">
+                <p>Oui, vous pouvez choisir vos sièges parmi ceux disponibles au moment de la réservation.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__title">Quels sont les modes de paiement acceptés ? <i class="fas fa-chevron-down"></i></button>
+            <div class="accordion__collapse collapse">
+              <div class="accordion__text">
+                <p>Nous acceptons les cartes de crédit, les cartes de débit, et PayPal.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__title">Y a-t-il des réductions pour les enfants ou les groupes ? <i class="fas fa-chevron-down"></i></button>
+            <div class="accordion__collapse collapse">
+              <div class="accordion__text">
+                <p>Oui, nous offrons des réductions pour les enfants de moins de 12 ans et pour les groupes de plus de 20 personnes.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__title">Comment puis-je obtenir une facture pour mon achat ? <i class="fas fa-chevron-down"></i></button>
+            <div class="accordion__collapse collapse">
+              <div class="accordion__text">
+                <p>Une facture sera envoyée à votre adresse email après la confirmation de votre paiement. Vous pouvez également la télécharger depuis votre compte.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__title">Que faire si j'ai perdu mes billets ? <i class="fas fa-chevron-down"></i></button>
+            <div class="accordion__collapse collapse">
+              <div class="accordion__text">
+                <p>Contactez immédiatement notre service client. Nous pourrons vous réémettre les billets après vérification de votre identité.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__title">Comment puis-je modifier ma réservation ? <i class="fas fa-chevron-down"></i></button>
+            <div class="accordion__collapse collapse">
+              <div class="accordion__text">
+                <p>Vous pouvez modifier votre réservation en ligne depuis votre compte, ou en contactant notre service client pour assistance.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__title">Quels sont les horaires d'ouverture de votre service client ? <i class="fas fa-chevron-down"></i></button>
+            <div class="accordion__collapse collapse">
+              <div class="accordion__text">
+                <p>Notre service client est disponible 24/7 via chat et email. Les appels téléphoniques sont acceptés pendant les heures de bureau, de 9h à 18h.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__title">Puis-je annuler ma réservation et obtenir un remboursement ? <i class="fas fa-chevron-down"></i></button>
+            <div class="accordion__collapse collapse">
+              <div class="accordion__text">
+                <p>Oui, vous pouvez annuler votre réservation jusqu'à 48 heures avant l'événement pour un remboursement complet.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+</main>
+
+<script>
+const accordionBtns = document.querySelectorAll(".accordion__title");
+
+accordionBtns.forEach((button) => {
+  button.addEventListener("click", (event) => {
+    let accCollapse = button.nextElementSibling;
+
+    if (!button.classList.contains("collapsing")) {
+      // open accordion item
+      if (!button.classList.contains("open")) {
+        accCollapse.style.display = "block";
+        let accHeight = accCollapse.clientHeight;
+
+        setTimeout(() => {
+          accCollapse.style.height = accHeight + "px";
+          accCollapse.style.display = "";
+        }, 1);
+
+        accCollapse.classList = "accordion__collapse collapsing";
+
+        setTimeout(() => {
+          accCollapse.classList = "accordion__collapse collapse open";
+        }, 300);
+      } 
+      //close accordion item
+      else {
+        accCollapse.classList = "accordion__collapse collapsing";
+
+        setTimeout(() => {
+          accCollapse.style.height = "0px";
+        }, 1);
+
+        setTimeout(() => {
+          accCollapse.classList = "accordion__collapse collapse";
+          accCollapse.style.height = "";
+        }, 300);
+      }
+
+      button.classList.toggle("open");
+    }
+  });
+});
+</script>
+</body>
+</html>

@@ -21,10 +21,7 @@
             overflow: hidden;
             padding: 20px;
             height: 40%;
-           
             left: 20%;
-           
-        
         }
 
         .search-bar {
@@ -41,19 +38,13 @@
             border-radius: 20px;
             left: 25%;
             top: 10%;
-           
         }
 
-        h2 h3{
+        h2, h3 {
             color: #333;
         }
 
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        ul li {
+        .accordion__item {
             background: #f4f4f4;
             margin-bottom: 10px;
             padding: 10px;
@@ -61,17 +52,37 @@
             cursor: pointer;
         }
 
-        ul li:hover {
+        .accordion__item:hover {
             background: #e4e4e4;
+        }
+
+        .accordion__title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 18px;
+        }
+
+        .accordion__title i {
+            transition: transform 0.3s;
+        }
+
+        .accordion__collapse {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion__collapse.open {
+            max-height: 200px; /* Adjust according to your needs */
         }
 
         a {
             text-decoration: none;
             color: #333;
-            
-
         }
-        #ret{
+
+        #ret {
             color: white;
         }
 
@@ -84,8 +95,6 @@
             font-size: 20px;
             text-align: center;
             margin-top: 50px;
-
-
         }
 
         @media (max-width: 768px) {
@@ -98,51 +107,122 @@
 </head>
 
 <body>
-        <div class="container">
-            <div class="search-bar">
-                <input type="text" id="search" placeholder="Posez votre question...">
-            </div>
+    <div class="container">
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Posez votre question...">
+        </div>
         <h2>Besoin d'aide?</h2>
         <h3>FAQS utiles</h3>
-        
-        <ul id="question">
-            <a href="">
-            <li>Comment créer un compte ?</li>
-        </a>
-        <a href="">
-            <li>Comment réinitialiser mon mot de passe ?</li>
-        </a>
-        <a href="">
-            <li>Comment contacter le support technique ?</li>
-        </a>
-        <a href="">
-            <li>Comment mettre à jour mes informations personnelles ?</li>
-        </a>
-        <a href="">
-            <li>Comment supprimer mon compte ?</li>
-        </a>
-        </ul>
-    <div  class="retour">
-        <a id="ret" href="parametre.html"> Retour </a>
+
+        <div class="accordion">
+            <!-- Question 1 -->
+            <div class="accordion__item">
+                <div class="accordion__title">
+                    <span>Comment créer un compte ?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="accordion__collapse collapse">
+                    <div class="accordion__text">
+                        <p>Pour créer un compte, cliquez sur le bouton "S'inscrire" en haut à droite de la page d'accueil et remplissez le formulaire d'inscription.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Question 2 -->
+            <div class="accordion__item">
+                <div class="accordion__title">
+                    <span>Comment réinitialiser mon mot de passe ?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="accordion__collapse collapse">
+                    <div class="accordion__text">
+                        <p>Pour réinitialiser votre mot de passe, cliquez sur "Mot de passe oublié" sur la page de connexion et suivez les instructions.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Question 3 -->
+            <div class="accordion__item">
+                <div class="accordion__title">
+                    <span>Comment contacter le support technique ?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="accordion__collapse collapse">
+                    <div class="accordion__text">
+                        <p>Vous pouvez contacter le support technique via le formulaire de contact sur notre site ou en appelant notre numéro d'assistance.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Question 4 -->
+            <div class="accordion__item">
+                <div class="accordion__title">
+                    <span>Comment mettre à jour mes informations personnelles ?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="accordion__collapse collapse">
+                    <div class="accordion__text">
+                        <p>Pour mettre à jour vos informations personnelles, allez dans les paramètres de votre compte et modifiez les informations nécessaires.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Question 5 -->
+            <div class="accordion__item">
+                <div class="accordion__title">
+                    <span>Comment supprimer mon compte ?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="accordion__collapse collapse">
+                    <div class="accordion__text">
+                        <p>Pour supprimer votre compte, veuillez contacter le support client qui vous guidera à travers le processus.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="retour">
+            <a id="ret" href="parametre.html">Retour</a>
+        </div>
     </div>
-</div>
 
     <script>
         document.getElementById('search').addEventListener('keyup', function () {
             let filter = this.value.toUpperCase();
-            let faqList = document.getElementById('question');
-            let faqItems = faqList.getElementsByTagName('li');
+            let faqList = document.querySelectorAll('.accordion__item');
 
-            for (let i = 0; i < faqItems.length; i++) {
-                let txtValue = faqItems[i].textContent || faqItems[i].innerText;
+            faqList.forEach(item => {
+                let txtValue = item.textContent || item.innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    faqItems[i].style.display = "";
+                    item.style.display = "";
                 } else {
-                    faqItems[i].style.display = "none";
+                    item.style.display = "none";
                 }
-            }
+            });
+        });
+
+        const accordionBtns = document.querySelectorAll(".accordion__title");
+
+        accordionBtns.forEach((button) => {
+            button.addEventListener("click", (event) => {
+                let accCollapse = button.nextElementSibling;
+
+                if (!button.classList.contains("collapsing")) {
+                    // open accordion item
+                    if (!button.classList.contains("open")) {
+                        accCollapse.style.maxHeight = accCollapse.scrollHeight + "px";
+                        accCollapse.classList.add("open");
+                        button.querySelector("i").classList.add("rotate");
+                    }
+                    // close accordion item
+                    else {
+                        accCollapse.style.maxHeight = "0px";
+                        accCollapse.classList.remove("open");
+                        button.querySelector("i").classList.remove("rotate");
+                    }
+
+                    button.classList.toggle("open");
+                }
+            });
         });
     </script>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css'>
 </body>
 
 </html>

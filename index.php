@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
  
@@ -293,16 +296,23 @@
         <nav class="navbar">
  
             <div class="navbar-left">
-                <a href="index.html" class="nav-link">Accueil</a>
-                <a href="product.html" class="nav-link">Reservation</a>
-                <a href="galerie.html" class="nav-link">Galerie</a>
-                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="index.php" class="nav-link">Accueil</a>
+                <a href="product.php" class="nav-link">Reservation</a>
+                <a href="galerie.php" class="nav-link">Galerie</a>
+                <a href="blog.php" class="nav-link">Blog</a>
             </div>
             <div class="navbar-center">
                 <span class="logo">GOLDSEAT</span>
             </div>
             <div class="navbar-right">
-                <a href="connexion.html" class="header__icon header__icon--account link focus-inset small-hide" id="account-link">
+            <?php
+                $email = $_SESSION['email'];
+                if(empty($_SESSION['email'])){
+                    echo '<a href="connexion.html" class="header__icon header__icon--account link focus-inset small-hide" id="account-link">';
+                }else{
+                    echo '<a href="parametre.html" class="header__icon header__icon--account link focus-inset small-hide" id="account-link">';
+                }
+            ?>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" focusable="false"
                          class="icon icon-account" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -314,12 +324,9 @@
                     </svg>
                     <span class="icon-text visually-hidden">Log in</span>
                 </a>
-                <div id="user-menu" style="display:none;">
-                    <a href="deconnexion.html" id="logout-link">Déconnexion</a>
-                    <a href="parametres.html" id="settings-link">Paramètres</a>
-                </div>
+           
                 
-                <a href="listeSouhait.html" class="wishlist-link" title="Favorites">
+                <a href="listeSouhait.php" class="wishlist-link" title="Favorites">
                     <svg width="24" height="24" class="icon icon-heart" viewBox="0 0 24 24" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -362,8 +369,7 @@
         </nav>
  
     </div>
- 
- 
+             
     <div id="carouselExampleDark" class="carousel carousel-dark slide">
         <div class="carousel-inner">
             <div class="carousel-item active" data-bs-interval="10000">
@@ -609,12 +615,12 @@
     <footer>
         <div class="footer-content">
             <div class="footer-links">
-                <a href="#">À propos</a>
-                <a href="#">FAQ</a>
-                <a href="contact.html">Contact</a>
-                <a href="#">Blog</a>
-                <a href="#">Mentions légales</a>
-                <a href="#">Politique de confidentialité</a>
+                <a href="index.php">À propos</a>
+                <a href="faq.html">FAQ</a>
+                <a href="contact.php">Contact</a>
+                <a href="blog.php">Blog</a>
+                <a href="mention.html">Mentions légales</a>
+                <a href="politique.html">Politique de confidentialité</a>
             </div>
         </div>
     </footer>
